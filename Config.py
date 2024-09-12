@@ -10,12 +10,20 @@
 
 
 #BG_Colour = (255,255,255)
-fps = 60
-PLAYER_VEL = 5
 
 #Display window
 WIDTH, HEIGHT = 1000, 800
 
+###CONFIGS###
+
+#BG_Colour = (255,255,255)
+FPS = 60
+PLAYER_VEL = 5
+
+
+###INITIALISING GAME WINDOW###
+#Display window
+WIDTH, HEIGHT = 1000, 800
 
 
 #THINGS TO ADD#

@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c865a82-5cc7-48f9-b07b-f006e3cd88bf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/CoA_v-0.1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Background.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CoA_Run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Draw.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Object.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/20 Enemies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Brown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Gray.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Background/Yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Hello.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Break.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Hit (28x24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Break.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Hit (28x24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Break.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Hit (28x24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Idle).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Pressed) (64x64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Idle).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Moving) (64x64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Bananas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Cherries.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Collected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Kiwi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Melon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Pineapple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Strawberry.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/Appearing (96x96).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/Desappearing (96x96).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/double_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/fall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/hit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/run.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/wall_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/double_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/fall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/hit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/run.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/wall_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/double_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/fall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/hit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/run.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/wall_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/double_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/fall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/hit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/run.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/wall_jump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Achievements.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Leaderboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Levels.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Previous.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Restart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Settings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Volume.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Text/Text (Black) (8x10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Text/Text (White) (8x10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Other/Confetti (16x16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Other/Dust Particle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Other/Shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Other/Transition.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Terrain/Terrain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Arrow/Hit (18x18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Arrow/Idle (18x18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/HitSide (22x22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/HitTop (22x22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Part 1 (22x22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Part 2 (22x22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Falling Platforms/Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Falling Platforms/On (32x10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Fan/Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Fan/On (24x8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/hit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Brown Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Brown On (32x8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Chain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Grey Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Grey On (32x8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Blink (42x42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Bottom Hit (42x42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Left Hit (42x42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Right Hit (42x42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Top Hit (42x42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Ice Particle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Mud Particle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Particle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/Chain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Blink (54x52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Bottom Hit (54x52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Left Hit (54x52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Right Hit (54x52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Top Hit (54x52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Chain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Spiked Ball.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Spikes/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Trampoline/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Traps/Trampoline/Jump (28x28).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/20 Enemies.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Brown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Gray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Pink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Purple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Hello.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box1/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box1/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box1/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box2/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box2/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box2/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box3/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box3/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Boxes/Box3/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/End/End (Idle).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/End/End (Pressed) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/Start/Start (Idle).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Checkpoints/Start/Start (Moving) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Bananas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Cherries.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Collected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Kiwi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Melon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Pineapple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Items/Fruits/Strawberry.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/Appearing (96x96).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/Desappearing (96x96).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/MaskDude/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/NinjaFrog/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/PinkMan/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/MainCharacters/VirtualGuy/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Achievements.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Leaderboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Levels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Previous.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Restart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Buttons/Volume.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Levels/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Text/Text (Black) (8x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Menu/Text/Text (White) (8x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Other/Confetti (16x16).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Other/Dust Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Other/Shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Other/Transition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Terrain/Terrain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Arrow/Hit (18x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Arrow/Idle (18x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Blocks/HitSide (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Blocks/HitTop (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Blocks/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Blocks/Part 1 (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Blocks/Part 2 (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Falling Platforms/Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Falling Platforms/On (32x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Fan/Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Fan/On (24x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Fire/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Fire/off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Fire/on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Platforms/Brown Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Platforms/Brown On (32x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Platforms/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Platforms/Grey Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Platforms/Grey On (32x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Blink (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Bottom Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Left Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Right Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Rock Head/Top Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Sand Mud Ice/Ice Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Sand Mud Ice/Mud Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Sand Mud Ice/Sand Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Saw/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Saw/off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Saw/on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Blink (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Bottom Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Left Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Right Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spike Head/Top Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spiked Ball/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spiked Ball/Spiked Ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Spikes/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Trampoline/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Traps/Trampoline/Jump (28x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/tutorial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python-Platformer-OGcode/tutorial.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2lN6tBmcYQCuX1znIdy0ygcdWRE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Background.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CoA_Run.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Draw.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Player.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1" />
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\Game_scripts" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CoA_Run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CoA_v-0.1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CoA_Run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.CoA_Run" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.347" />
+        <option value="bundled-python-sdk-c2d6afa66fbe-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.347" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c865a82-5cc7-48f9-b07b-f006e3cd88bf" name="Changes" comment="" />
+      <created>1725008398356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725008398356</updated>
+      <workItem from="1725008399861" duration="10441000" />
+      <workItem from="1725110057571" duration="4638000" />
+      <workItem from="1725271546844" duration="8264000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CoA_Run.py</url>
+          <line>371</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$Player.coverage" NAME="Player Coverage Results" MODIFIED="1725113299505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$Draw.coverage" NAME="Draw Coverage Results" MODIFIED="1725010650862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game_scripts" />
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$Background.coverage" NAME="Background Coverage Results" MODIFIED="1725025162281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$CoA_Run.coverage" NAME="CoA_Run Coverage Results" MODIFIED="1725279048082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

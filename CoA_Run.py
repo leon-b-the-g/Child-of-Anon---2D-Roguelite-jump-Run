@@ -141,7 +141,7 @@ class Player(pygame.sprite.Sprite):
 
     #Loads sprite, with directories ref. and sprite size and then whether we are having directions
     SPRITES = load_sprite_sheets("MainCharacters","VirtualGuy",32,32,True)
-
+    print(SPRITES)
 
     def __init__(self, x, y, width, height):
         super().__init__()
@@ -402,6 +402,8 @@ def main(window):
 
     #Create player object
     player = Player(100,100,50,50)
+
+
 
     ###Enviornment###
 

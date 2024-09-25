@@ -15,24 +15,7 @@ from os.path import isfile,join
 
 pygame.init()
 
-#Function for loading block images
-def get_block(size):
-    path = join("assets","Terrain","Terrain.png")
-    #get image (load via path)
-    image = pygame.image.load(path).convert_alpha()
 
-    #load a surface
-    surface = pygame.Surface((size,size), pygame.SRCALPHA, 32)
-    #load a rect from x = 96 pixel, y = 0 pixel (position on Terrain.png that I want to load the image from)
-    rect = pygame.Rect(96,128,size,size)
-        ###x:96 y:128 is PINK BLOCK
-        ###x:96, y:0 is GREEN NORMAL BLOCK
-    #Blit the image onto the surface (but only the part of the image that I want)
-    surface.blit(image, (0,0), rect)
-
-
-    #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
-    return pygame.transform.scale2x(surface)
 
 
 #Make a super class for all objects in the game to inherit from
@@ -72,6 +55,25 @@ class Block(Object):
         #Grab mask for collision detection
         self.mask = pygame.mask.from_surface(self.image)
 
+#Class for generating text
+class Text(Object):
+    def __init__(self,x,y,size):
+        #need to pass 4 arguments to the super init constructor, duplicating size as it's the same
+        # for width and height for now
+        super().__init__(x,y,size,size)
+
+        #Load image with get_text function
+        self.letters = get_text(size)
+
+        ###WORKS!!!! Put draw function here maybe to draw specific text? BUT IT WORKS!!!
+        #Blit image onto surface
+        self.image.blit(self.letters['H'][0], (0,0))
+        self.image.blit(self.letters['E'][0], (14,0))
+        self.image.blit(self.letters['H'][0], (28, 0))
+        self.image.blit(self.letters['E'][0], (42, 0))
+
+        #self.image.blit(self.image, (0,0))
+        self.mask = pygame.mask.from_surface(self.image)
 
 
 #Class for generating fire
@@ -112,9 +114,79 @@ class Fire(Object):
 
         # Updating the rectangle of the character (adjusted based on sprite used)
         self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
+
         # Update mask for collision check (mask is a mapping of pixels in the sprite)
         self.mask = pygame.mask.from_surface(self.image)
 
         #CHECK if animation count isnt getting too high for statically animated sprites bec otherwise it will crash the game
         if self.animation_count // self.ANIMATION_DELAY > len(sprites): #Not doing this with player bec it kills double jump
             self.animation_count = 0
+
+
+
+
+#Function for loading block images
+def get_block(size):
+    path = join("assets","Terrain","Terrain.png")
+    #get image (load via path)
+    image = pygame.image.load(path).convert_alpha()
+
+    #load a surface
+    surface = pygame.Surface((size,size), pygame.SRCALPHA, 32)
+    #load a rect from x = 96 pixel, y = 0 pixel (position on Terrain.png that I want to load the image from)
+    rect = pygame.Rect(96,128,size,size)
+        ###x:96 y:128 is PINK BLOCK
+        ###x:96, y:0 is GREEN NORMAL BLOCK
+    #Blit the image onto the surface (but only the part of the image that I want)
+    surface.blit(image, (0,0), rect)
+
+
+    #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
+    return pygame.transform.scale2x(surface)
+
+
+
+
+
+
+
+# Function for loading text sprite sheet
+def get_text(size):
+    #MIGHT NOT WORK BECAUSE TEXT.PNG IS ONE DIRECTORY DEEPER
+    path = join("assets", "Menu", "Text(White)(8x10).png")
+
+
+    #loading text sprite sheet in the dimensions 8x10 (which is what we want)
+    all_text = load_sprite_sheets("Menu","Text",8,10)
+    print(all_text)
+        #Parsing letters into dictionary, loaded:
+            #Key: Text(Black)(8x10).png , Text(Black)(8x10).png
+            #Value: List of Surfaces
+
+     # load a rect
+
+    ABC_dict = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': [], 'I': [], 'J': [],
+                'K': [], 'L': [], 'M': [], 'N': [], 'O': [], 'P': [], 'Q': [], 'R': [], 'S': [], 'T': [],
+                'U': [], 'V': [], 'W': [], 'X': [], 'Y': [], 'Z': []}
+
+    #Make me a list for the ABC
+    ABC_list = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    letter_count = 0
+
+    ###I BUILT THIS I AM A GENIUS
+    #For loop - goes through all the letters in the dictionary, then assigns a surface from a value in the dictionary
+    #containing the surfaces of the letters accordingly
+    #Stops at 26 letters
+    for k,v in all_text.items():
+        for surface in all_text.values():
+            for letter in surface:
+                ABC_dict[ABC_list[letter_count]].append(letter)
+                letter_count += 1
+                if letter_count == 26:
+                    break
+        print(ABC_dict)
+
+        #Returns a perfect dictionary, with keys of letters, and values with according surfaces
+        return ABC_dict
+
+

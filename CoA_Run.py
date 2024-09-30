@@ -403,6 +403,8 @@ def main(window):
     #Create player object
     player = Player(100,100,50,50)
 
+
+
     ###Enviornment###
 
     #Creating a floor by creating blocks to left and right of a point at the bottom of the screen

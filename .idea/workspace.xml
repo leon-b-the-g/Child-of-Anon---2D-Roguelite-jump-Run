@@ -4,194 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c865a82-5cc7-48f9-b07b-f006e3cd88bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/CoA_v-0.1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Background.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoA_Run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Draw.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/20 Enemies.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Green.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Pink.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Purple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Background/Yellow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Hello.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Break.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Hit (28x24).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Break.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Hit (28x24).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Break.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Hit (28x24).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Idle).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Pressed) (64x64).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Idle).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Moving) (64x64).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Bananas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Cherries.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Collected.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Kiwi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Melon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Orange.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Pineapple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Items/Fruits/Strawberry.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/Appearing (96x96).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/Desappearing (96x96).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/double_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/fall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/hit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/run.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/wall_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/double_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/fall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/hit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/run.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/wall_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/double_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/fall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/hit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/run.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/wall_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/double_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/fall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/hit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/run.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/wall_jump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Achievements.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Leaderboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Levels.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Previous.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Restart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Buttons/Volume.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/47.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/49.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Levels/50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Text/Text (Black) (8x10).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Menu/Text/Text (White) (8x10).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Other/Confetti (16x16).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Other/Dust Particle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Other/Shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Other/Transition.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Terrain/Terrain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Arrow/Hit (18x18).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Arrow/Idle (18x18).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/HitSide (22x22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/HitTop (22x22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Part 1 (22x22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Blocks/Part 2 (22x22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Falling Platforms/Off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Falling Platforms/On (32x10).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Fan/Off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Fan/On (24x8).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/hit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Fire/on.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Brown Off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Brown On (32x8).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Chain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Grey Off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Platforms/Grey On (32x8).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Blink (42x42).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Bottom Hit (42x42).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Left Hit (42x42).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Right Hit (42x42).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Rock Head/Top Hit (42x42).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Ice Particle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Mud Particle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Particle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/Chain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Saw/on.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Blink (54x52).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Bottom Hit (54x52).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Left Hit (54x52).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Right Hit (54x52).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spike Head/Top Hit (54x52).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Chain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Spiked Ball.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Spikes/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Trampoline/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Traps/Trampoline/Jump (28x28).png" afterDir="false" />
+    <list default="true" id="2c865a82-5cc7-48f9-b07b-f006e3cd88bf" name="Changes" comment="Working gravity, collision, spritesheet loading dynamically (animations) and working jump/double jump. Not uploaded asset library yet">
+      <change afterPath="$PROJECT_DIR$/GameStateManager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Statescreens/Pause-idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Statescreens/Pause-quit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Statescreens/Pause-resume.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Menu/Statescreens/Pause-save.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Background.py" beforeDir="false" afterPath="$PROJECT_DIR$/Background.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoA_Run.py" beforeDir="false" afterPath="$PROJECT_DIR$/CoA_Run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object.py" beforeDir="false" afterPath="$PROJECT_DIR$/Object.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/20 Enemies.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Python-Platformer-OGcode/assets/Background/Blue.png" beforeDir="false" />
@@ -384,6 +207,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -399,9 +223,11 @@
     &quot;Python.Background.executor&quot;: &quot;Run&quot;,
     &quot;Python.CoA_Run.executor&quot;: &quot;Run&quot;,
     &quot;Python.Draw.executor&quot;: &quot;Run&quot;,
+    &quot;Python.GameStateManager.executor&quot;: &quot;Run&quot;,
     &quot;Python.Player.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leonb/PycharmProjects/CoA_v-0.1/assets/Menu/Statescreens&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -411,12 +237,18 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\assets\Menu\Statescreens" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\assets\Menu\Statescreens" />
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\assets\Menu\Text" />
+      <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\assets\Menu" />
       <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1" />
       <recent name="C:\Users\leonb\PycharmProjects\CoA_v-0.1\Game_scripts" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.CoA_Run">
     <configuration name="CoA_Run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CoA_v-0.1" />
       <option name="ENV_FILES" value="" />
@@ -440,9 +272,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="GameStateManager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CoA_v-0.1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GameStateManager.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.CoA_Run" />
+        <item itemvalue="Python.GameStateManager" />
       </list>
     </recent_temporary>
   </component>
@@ -464,28 +320,68 @@
       <updated>1725008398356</updated>
       <workItem from="1725008399861" duration="10441000" />
       <workItem from="1725110057571" duration="4638000" />
-      <workItem from="1725271546844" duration="8264000" />
+      <workItem from="1725271546844" duration="9682000" />
+      <workItem from="1725371652064" duration="1628000" />
+      <workItem from="1725401202879" duration="260000" />
+      <workItem from="1725401493680" duration="86000" />
+      <workItem from="1725573437290" duration="175000" />
+      <workItem from="1726054263053" duration="264000" />
+      <workItem from="1726133751842" duration="9739000" />
+      <workItem from="1726163634703" duration="196000" />
+      <workItem from="1726488305877" duration="8280000" />
+      <workItem from="1726577945619" duration="7357000" />
+      <workItem from="1726585662534" duration="213000" />
+      <workItem from="1726590862982" duration="4013000" />
+      <workItem from="1726745154113" duration="2676000" />
+      <workItem from="1726876902622" duration="837000" />
+      <workItem from="1726878387086" duration="305000" />
     </task>
+    <task id="LOCAL-00001" summary="Working gravity, collision, spritesheet loading dynamically (animations) and working jump/double jump. Not uploaded asset library yet">
+      <option name="closed" value="true" />
+      <created>1725280619979</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725280619979</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/CoA_Run.py</url>
-          <line>371</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working gravity, collision, spritesheet loading dynamically (animations) and working jump/double jump. Not uploaded asset library yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working gravity, collision, spritesheet loading dynamically (animations) and working jump/double jump. Not uploaded asset library yet" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CoA_v_0_1$Player.coverage" NAME="Player Coverage Results" MODIFIED="1725113299505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CoA_v_0_1$Draw.coverage" NAME="Draw Coverage Results" MODIFIED="1725010650862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Game_scripts" />
     <SUITE FILE_PATH="coverage/CoA_v_0_1$Background.coverage" NAME="Background Coverage Results" MODIFIED="1725025162281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CoA_v_0_1$CoA_Run.coverage" NAME="CoA_Run Coverage Results" MODIFIED="1725279048082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$CoA_Run.coverage" NAME="CoA_Run Coverage Results" MODIFIED="1726876952967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CoA_v_0_1$GameStateManager.coverage" NAME="GameStateManager Coverage Results" MODIFIED="1726876929357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

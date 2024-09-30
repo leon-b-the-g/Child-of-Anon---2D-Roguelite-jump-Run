@@ -34,3 +34,6 @@ def get_background(name):
 
     #Return the image paths and their tile positions
     return tiles, image
+
+
+

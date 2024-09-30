@@ -117,7 +117,17 @@ class Startscreen(Object):
 
 
 #Write new pause class including button class from Object.py
-class Pause():
+#class Pause():
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

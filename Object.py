@@ -18,6 +18,7 @@ pygame.init()
 
 
 
+
 #Make a super class for all objects in the game to inherit from
 class Object(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height, name=None):
@@ -129,6 +130,7 @@ class Fire(Object):
 
         # Updating the rectangle of the character (adjusted based on sprite used)
         self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
+
 
         # Update mask for collision check (mask is a mapping of pixels in the sprite)
         self.mask = pygame.mask.from_surface(self.image)

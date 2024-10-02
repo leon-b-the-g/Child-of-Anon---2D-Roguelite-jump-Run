@@ -2,11 +2,11 @@
 #from Draw import *
 import pygame
 
-from CoA_Run import load_sprite_sheets
 from Config import *
+
 import os
 #Display window
-WIDTH, HEIGHT = 1000, 800
+WIDTH, HEIGHT = 1280, 720
 
 from os import listdir
 
@@ -41,6 +41,7 @@ class Object(pygame.sprite.Sprite):
 
 
 #Class for generating blocks
+#Class for generating blocks
 class Block(Object):
     def __init__(self,x,y,size):
         #need to pass 4 arguments to the super init constructor, duplicating size as it's the same
@@ -51,6 +52,19 @@ class Block(Object):
         block = get_block(size)
         #Blit image onto surface
         self.image.blit(block, (0,0))
+
+        #Grab mask for collision detection
+        self.mask = pygame.mask.from_surface(self.image)
+
+#Class for generating platforms
+class Platform(Object):
+    def __init__(self,x,y,size):
+        super().__init__(x,y,size,size)
+        #function for loading platform (using get platform function) then blitting it 
+            #CAN DECLARE SIZE HERE, good if we dont have equal width and height of obj
+        plat_onscreen = get_platform(size)
+        #Blit image onto surface
+        self.image.blit(plat_onscreen, (x,y))
 
         #Grab mask for collision detection
         self.mask = pygame.mask.from_surface(self.image)
@@ -84,6 +98,7 @@ class Fire(Object):
     def __init__(self,x,y,width,height):
         super().__init__(x,y,width,height,"fire") #NOTE passing optional name here, helps determine what object
         #is being collided with in CoA_Run.py
+        from Load_sprites import load_sprite_sheets
         self.fire = load_sprite_sheets("Traps","Fire",width,height)
 
         #Load image
@@ -144,8 +159,31 @@ def get_block(size):
     #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
     return pygame.transform.scale2x(surface)
 
+#Function for loading block images
+def get_platform(size):
+    path = join("assets","Terrain","Terrain.png")
+    #get image (load via path)
+    image = pygame.image.load(path).convert_alpha()
 
+    #load a surface
+    #load a rect from x = 144 pixel, y = 128  pixel (position on Terrain.png that I want to load the image from)
+    #rect = pygame.Rect(192,128,size,size)
+        #Orange platform
+            #location: 192, 128
+            #Dimensions 16, 72
 
+        ###x:96 y:128 is PINK BLOCK 
+        ###x:96, y:0 is GREEN NORMAL BLOCK
+    #load a surface
+    surface = pygame.Surface((size,size), pygame.SRCALPHA, 32)
+    #load a rect from x = 96 pixel, y = 1/3rd of x, because of platform dimensions
+    rect = pygame.Rect(144,128,size,size/3)
+        ###x:96 y:128 is PINK BLOCK
+        ###x:96, y:0 is GREEN NORMAL BLOCK
+    #Blit the image onto the surface (but only the part of the image that I want)
+    surface.blit(image, (0,0), rect)
+
+    return pygame.transform.scale2x(surface)
 
 
 
@@ -155,8 +193,9 @@ def get_text(size):
     #MIGHT NOT WORK BECAUSE TEXT.PNG IS ONE DIRECTORY DEEPER
     path = join("assets", "Menu", "Text(White)(8x10).png")
 
-
+    
     #loading text sprite sheet in the dimensions 8x10 (which is what we want)
+    from Load_sprites import load_sprite_sheets
     all_text = load_sprite_sheets("Menu","Text",8,10)
     print(all_text)
         #Parsing letters into dictionary, loaded:

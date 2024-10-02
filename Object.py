@@ -36,9 +36,9 @@ class Object(pygame.sprite.Sprite):
         self.name = name
 
     #Draw method for Object parent class
-    def draw(self,win,offset_x): #offset_y
+    def draw(self,win,offset_x,offset_y): #offset_y
         #Minusing offset_x to make the player move left and right on the screen
-        win.blit(self.image, (self.rect.x - offset_x, self.rect.y))
+        win.blit(self.image, (self.rect.x - offset_x, self.rect.y - offset_y))
 
 
 #Class for generating blocks
@@ -59,11 +59,11 @@ class Block(Object):
 
 #Class for generating platforms
 class Platform(Object):
-    def __init__(self,x,y,size):
+    def __init__(self,x,y,size,x_size,y_size):
         super().__init__(x,y,size,size)
         #function for loading platform (using get platform function) then blitting it 
             #CAN DECLARE SIZE HERE, good if we dont have equal width and height of obj
-        plat_onscreen = get_platform(size)
+        plat_onscreen = get_platform(x_size,y_size)
         #Blit image onto surface
         self.image.blit(plat_onscreen, (x,y))
 
@@ -148,10 +148,10 @@ def get_block(size):
     #get image (load via path)
     image = pygame.image.load(path).convert_alpha()
 
-    #load a surface
+    #load , size= width, height of our surface
     surface = pygame.Surface((size,size), pygame.SRCALPHA, 32)
     #load a rect from x = 96 pixel, y = 0 pixel (position on Terrain.png that I want to load the image from)
-    rect = pygame.Rect(96,128,size,size)
+    rect = pygame.Rect(96,0,size,size)
         ###x:96 y:128 is PINK BLOCK
         ###x:96, y:0 is GREEN NORMAL BLOCK
     #Blit the image onto the surface (but only the part of the image that I want)
@@ -162,14 +162,10 @@ def get_block(size):
     return pygame.transform.scale2x(surface)
 
 #Function for loading block images
-def get_platform(size):
+def get_platform(x_size,y_size):
     path = join("assets","Terrain","Terrain.png")
     #get image (load via path)
     image = pygame.image.load(path).convert_alpha()
-
-    #load a surface
-    #load a rect from x = 144 pixel, y = 128  pixel (position on Terrain.png that I want to load the image from)
-    #rect = pygame.Rect(192,128,size,size)
         #Orange platform
             #location: 192, 128
             #Dimensions 16, 72
@@ -177,12 +173,12 @@ def get_platform(size):
         ###x:96 y:128 is PINK BLOCK 
         ###x:96, y:0 is GREEN NORMAL BLOCK
     #load a surface
-    surface = pygame.Surface((size,size), pygame.SRCALPHA, 32)
-    #load a rect from x = 96 pixel, y = 1/3rd of x, because of platform dimensions
-    rect = pygame.Rect(144,128,size,size/3)
+    surface = pygame.Surface((x_size,y_size), pygame.SRCALPHA, 32)
+    #load a rect from x = 192 pixel, y = 60, because of grey platform dimensions
+    rect = pygame.Rect(0,0,x_size,y_size)
         ###x:96 y:128 is PINK BLOCK
         ###x:96, y:0 is GREEN NORMAL BLOCK
-    #Blit the image onto the surface (but only the part of the image that I want)
+    #Blit the image onto the surface (but only the part of the image that I want; rect)
     surface.blit(image, (0,0), rect)
 
     return pygame.transform.scale2x(surface)

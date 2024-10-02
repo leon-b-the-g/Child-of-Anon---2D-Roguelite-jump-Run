@@ -1,50 +1,66 @@
-#Importng from my scripts
-
-
-from Background import *
-from Player import *
-from Object import *
+#See Config.py for list of module initializations 
 from Config import *
-
-#Other important modules
-import os
-import random
-import math
+FPS = 60 #Cant import these variables from Config for some reason
+PLAYER_VEL = 5 
+WIDTH, HEIGHT = 1280, 720
 import pygame
-
-from os import listdir
-
-from os.path import isfile,join
-
-
-
 
 pygame.init()
 #Set Caption (working title: Children of Anor), and key parameters
 pygame.display.set_caption("Children of Anor")
 
 #Drawing window
-window = pygame.display.set_mode((WIDTH,HEIGHT))
+#WIDTH AND HEIGHT ARE BEING WIERD
+window = pygame.display.set_mode((1280, 720))
 
 
+#Pulls a font ###FIND A BETTER PLACE FOR THIS
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets\Menu\Text\Text_font.ttf", size)
 
+###Clickables ###
+    ###BUTTONS###
+    #pause button
+def PB_init():
+    unscaled_pause = pygame.image.load("assets\Menu\Buttons\Restart.png") # 21 x 22 pxl 
+    new_size = (unscaled_pause.get_width() * 3, unscaled_pause.get_height() * 3) #pulls exact dimensions and scales 
+    pause_image = pygame.transform.scale(unscaled_pause, new_size) # scale up
+    
+        #pause button #Made here because needed in draw
+    pause_button = Button(image=(pause_image), pos=(1100, 50 ), 
+                        text_input=None, font=get_font(75), base_color="White", hovering_color="Green")
+    Button_text = get_font(100).render(None, True, "#b68f40") #Renders font, dont need this but important for drawing
+    Button_rect = Button_text.get_rect(center=(0,0)) # need this for making text buttons
+    button_surf = pygame.Surface((255, 100), pygame.SRCALPHA)  # need this for making text buttons
 
+    PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
+    pause_button.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
+    pause_button.update(window) #Handle pause button interaction
+    return pause_button
 
 ###FUNCTIONS FOR DRAWING GAME###
 
-def draw (window,background,bg_image,player,objects,offset_x):
+def draw (window,background,bg_image,player,objects,offset_x,offset_y):
 
     #drawing background:
     for tile in background:
         #Passing position that we want to draw at (tile) and also passing the image that we want to draw
         #Can loop because we made tile a tuple in Background.py
         window.blit(bg_image, tile)
-
+        
     #Draw objects
     for obj in objects:
-        obj.draw(window,offset_x)
+        obj.draw(window,offset_x,offset_y)
+    
+    #Update window with pause button THIS ALREADY DRAWS THE BUTTON
+    #call button_init to make the button
+    Pause_onscreen = PB_init()
+    PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
+    Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
+    Pause_onscreen.update(window) #Handle pause button interaction
 
-    player.draw(window,offset_x)
+    player.draw(window,offset_x,offset_y)
+
     #Update each frame, clears screen each frame
     pygame.display.update()
 
@@ -79,7 +95,7 @@ def flip(sprites):
     return [pygame.transform.flip(sprite, True, False) for sprite in sprites]
 
 
-#Function for loading sprite sheets
+#Function for loading sprite sheets. ALso in Load_sprites
 
 def load_sprite_sheets(dir1,dir2,width,height,direction=False):
     path = join("assets", dir1, dir2)
@@ -141,7 +157,7 @@ class Player(pygame.sprite.Sprite):
 
     #Loads sprite, with directories ref. and sprite size and then whether we are having directions
     SPRITES = load_sprite_sheets("MainCharacters","VirtualGuy",32,32,True)
-    print(SPRITES)
+   
 
     def __init__(self, x, y, width, height):
         super().__init__()
@@ -295,10 +311,10 @@ class Player(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.sprite)
 
     #Draw method for player
-    def draw(self,win,offset_x):
+    def draw(self,win,offset_x,offset_y):
         #loading sprite from dictionary: sprites using update method
         #blitting on window
-        win.blit(self.sprite,(self.rect.x - offset_x,self.rect.y))
+        win.blit(self.sprite,(self.rect.x - offset_x,self.rect.y -offset_y))
 
 
 ###FUNCTIONS FOR COLLISION DETECTION###
@@ -359,9 +375,9 @@ def handle_move(player,objects):
     player.x_vel = 0
 
     #Checking for collision in x direction
-    collide_left = collide(player,objects,-PLAYER_VEL*2) #NOTE neg X velocity because left is NEG x co ordinate
-    collide_right = collide(player,objects,PLAYER_VEL*2) # NOTE *2 to make sure we are checking far enough ahead for collision
-    #NOTE if we make this value 1.5 its almost like the player is "sticky" to the wall...
+    collide_left = collide(player,objects,-PLAYER_VEL*2) #Note neg X velocity because left is NEG x co ordinate
+    collide_right = collide(player,objects,PLAYER_VEL*2) #Note *2 to make sure we are checking far enough ahead for collision
+    #Note if we make this value 1.5 its almost like the player is "sticky" to the wall...
 
     #If keys are pressed, move player
 
@@ -384,7 +400,7 @@ def handle_move(player,objects):
 ###FUNCTION FOR MAIN GAME LOOP ####
 
 
-def main(window):
+def main_CoA(window):
     #Keep track of loop iterations
     clock = pygame.time.Clock()
     #Get background image, could load different backgrounds for levels here in future
@@ -399,37 +415,79 @@ def main(window):
 
     #Block size for floor
     block_size = 96
+    #platform_size = 64
+    platform_x = 96
+    platform_y = 96
 
     #Create player object
     player = Player(100,100,50,50)
 
-
-
+    ###Clickables
+    #pause button
+    #Loaded image at the start of script
+    #pause_image = pygame.image.load("assets\Menu\Buttons\Settings.png") # 21 x 22 pxl
+    #Init button
+    #pause_button = Button(image=pause_image, pos=(980, 40), 
+    #                    text_input=None, font=get_font(75), base_color="White", hovering_color="Green")
+   
     ###Enviornment###
-
+    
     #Creating a floor by creating blocks to left and right of a point at the bottom of the screen
     floor = [Block(i* block_size, HEIGHT - block_size,block_size)
-             for i in range(-WIDTH//block_size, WIDTH * 2 // block_size)]
+             for i in range(-WIDTH//block_size, WIDTH * 2 // block_size)
+             ]
+
+    ###PLATFORMS###
+    ###floating platforms at 8* height-block_size
+    air_blocks=[Block(block_size * i, HEIGHT-block_size *8,block_size)
+    for i in range(0,block_size-48,4)] 
+
+    #First few blocks
+    blocks = [#Block(block_size*3,HEIGHT-block_size*4,block_size),
+              Block(block_size*5,HEIGHT-block_size*4,block_size),
+              Block(block_size*7,HEIGHT-block_size*4,block_size),
+              Block(block_size*10,HEIGHT-block_size*6,block_size)
+              ]
+    
+    #Winning platform 
+
+        
+        #init platformblock 
+    first_platform = Platform(block_size*3,HEIGHT-block_size*4,block_size,platform_x,platform_y)
+    #first_platform = [Platform(i* platform_size, HEIGHT//2,platform_size)
+    #         for i in range(-WIDTH//platform_size, WIDTH * 2 // platform_size)]
+    #all_platforms = [Platform(i* block_size, HEIGHT//2,block_size)
+    #            for i in range(-WIDTH//block_size, WIDTH * 2 // block_size)]
+    #Can build for loops here to make more easily
+    #                     for i in range(-WIDTH//platform_width, WIDTH *2 //block_size))
 
     ###TRAPS###
 
     fire = Fire(100,HEIGHT-block_size -64, 16, 32)  #Dimensions: 16x32
     fire.on()
+    
 
+    ###BUTTONS###
+    Pause_onscreen = PB_init()
+
+    #SCREEN.fill("black") WRITE FUNCTION FOR DRAWING BACKGROUND maybe?
+
+    pygame.display.update() # Update (COULD BE SOURCE OF GETTING GAME STUCK)
 
     #Making a list of objects being drawn, passing floor into this list too
     #This list is used to draw objects in the game loop
-    objects = [*floor, Block(0,HEIGHT-block_size*2,block_size),
+    objects = [*floor, *blocks, *air_blocks,first_platform, Block(0,HEIGHT-block_size*2,block_size),
                #This block is roughly in the middle of the screen
-               Block(block_size*3,HEIGHT-block_size*4,block_size),fire]
+               Block(block_size*3,HEIGHT-block_size*4,block_size),
+               fire]
 
 
     #Creating scrolling backgrounds
     #By offsetting how we draw the background, we can make it look like we scroll through the background
     offset_x = 0
-    offset_y = 0
-    #scroll_area_width = WIDTH // 2
-    scroll_area_width = 200
+    offset_y = 0 ### IMPLEMENT Y SCROLLING HERE
+    Y_scroll_area_width = 200
+    X_scroll_area_width = 300
 
     #### Main game loop###
     run = True
@@ -449,25 +507,55 @@ def main(window):
                 if event.key == pygame.K_SPACE and player.jump_count < 2:
                     player.jump()
 
+            
+          
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                os.sys.exit()
+
+            #If we click button, exec main_menu
+            PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
+            Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction DOESNT WORKING TRYING IN IF LOOP
+            Pause_onscreen.update(window)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Pause_onscreen.checkForInput(PLAY_MOUSE_POS):
+                   
+                    from GameStateManager import Game
+                    Pause_onscreen.changeColor("Green")
+                    game = Game() #Run Game class from GameStateManager
+                    game.run()
 
         #Run the animation loops, handle movement, draw each frame with the list of objects
-        player.loop(FPS)
-        fire.loop()
-        handle_move(player,objects)
-        draw(window, background, bg_image, player,objects,offset_x)#offset_y)
+        player.loop(FPS)  #runs player
+        fire.loop()       #runs fire 
+        handle_move(player,objects) #handle movement via input
+        draw(window, background, bg_image, player,objects,offset_x,offset_y)
+        #window.blit(Button_text, Button_rect)   #draw pause button (after game frame) ###NOT WORKING AS INTENDED ###
+        PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
+        Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
+        Pause_onscreen.update(window) #Handle pause button interaction
 
-        #Handling scrolling background
+        #Handling horizontal scrolling background
             #if im going right im checking if im near the boundary then offsetting x accordingly
             #If im going left, I am checking the other boundary and adjusting x accordingly
-        if ((player.rect.right - offset_x >= WIDTH - scroll_area_width) and player.x_vel > 0) or (
-                (player.rect.left - offset_x <= scroll_area_width) and player.x_vel < 0):
+        if ((player.rect.right - offset_x >= WIDTH - X_scroll_area_width) and player.x_vel > 0) or (
+                (player.rect.left - offset_x <= X_scroll_area_width) and player.x_vel < 0):
             ###JUMP CUT to next screen###
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
             offset_x += player.x_vel
+
+        #Handles vertical scrolling 
+        if ((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)or (
+                (player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+                #CAN ADD OR STATEMENT TO ADD DOWNWARD SCROLLING
+            ###JUMP CUT to next screen###
+            #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
+            #SCROLLING###
+            offset_y += player.y_vel
     pygame.quit()
     quit()
 
 #Runs game only if we are running this script directly
 if __name__ == "__main__":
-    main(window)
+    main_CoA(window)

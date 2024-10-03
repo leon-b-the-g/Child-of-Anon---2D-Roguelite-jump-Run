@@ -458,7 +458,11 @@ def main_CoA(window):
             #x_size, y_size dimensions of image
      
     first_platform = Platform((WIDTH - block_size*4),(HEIGHT-block_size*2),96,32) 
-    
+    [Block(block_size * i, HEIGHT-block_size *8,block_size)
+    for i in range(0,block_size-48,4)]
+
+    platforms = [Platform(WIDTH-block_size*8, block_size* i,96,32)
+                 for i in range(0,block_size-48,4)]
     #first_platform = [Platform(i* platform_size, HEIGHT//2,platform_size)
     #         for i in range(-WIDTH//platform_size, WIDTH * 2 // platform_size)]
     #all_platforms = [Platform(i* block_size, HEIGHT//2,block_size)
@@ -483,7 +487,7 @@ def main_CoA(window):
     objects = [*floor, *blocks, *air_blocks, Block(0,HEIGHT-block_size*2,block_size),
                #This block is roughly in the middle of the screen
                Block(block_size*3,HEIGHT-block_size*4,block_size),
-               fire,first_platform]
+               fire,first_platform, *platforms]
 
 
     #Creating scrolling backgrounds

@@ -415,10 +415,8 @@ def main_CoA(window):
 
     #Block size for floor
     block_size = 96
-    #platform_size = 64
-    platform_x = 96
-    platform_y = 96
-
+    platform_size = 64
+    
     #Create player object
     player = Player(100,100,50,50)
 
@@ -444,16 +442,23 @@ def main_CoA(window):
 
     #First few blocks
     blocks = [#Block(block_size*3,HEIGHT-block_size*4,block_size),
-              Block(block_size*5,HEIGHT-block_size*4,block_size),
+              #Block(block_size*5,HEIGHT-block_size*4,block_size),
               Block(block_size*7,HEIGHT-block_size*4,block_size),
               Block(block_size*10,HEIGHT-block_size*6,block_size)
               ]
     
-    #Winning platform 
-
+    #First platform 
+    
+    #platform_x = 16
+    #platform_y = 48
         
-        #init platformblock 
-    first_platform = Platform(block_size*3,HEIGHT-block_size*4,block_size,platform_x,platform_y)
+        #platform init requirements
+        #self,x,y,width,height
+            #x,y positions on screen
+            #x_size, y_size dimensions of image
+     
+    first_platform = Platform((WIDTH - block_size*4),(HEIGHT-block_size*2),96,32) 
+    
     #first_platform = [Platform(i* platform_size, HEIGHT//2,platform_size)
     #         for i in range(-WIDTH//platform_size, WIDTH * 2 // platform_size)]
     #all_platforms = [Platform(i* block_size, HEIGHT//2,block_size)
@@ -462,10 +467,9 @@ def main_CoA(window):
     #                     for i in range(-WIDTH//platform_width, WIDTH *2 //block_size))
 
     ###TRAPS###
-
+        #x,y = position, width height are dimensions
     fire = Fire(100,HEIGHT-block_size -64, 16, 32)  #Dimensions: 16x32
     fire.on()
-    
 
     ###BUTTONS###
     Pause_onscreen = PB_init()
@@ -476,10 +480,10 @@ def main_CoA(window):
 
     #Making a list of objects being drawn, passing floor into this list too
     #This list is used to draw objects in the game loop
-    objects = [*floor, *blocks, *air_blocks,first_platform, Block(0,HEIGHT-block_size*2,block_size),
+    objects = [*floor, *blocks, *air_blocks, Block(0,HEIGHT-block_size*2,block_size),
                #This block is roughly in the middle of the screen
                Block(block_size*3,HEIGHT-block_size*4,block_size),
-               fire]
+               fire,first_platform]
 
 
     #Creating scrolling backgrounds

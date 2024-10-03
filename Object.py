@@ -57,19 +57,6 @@ class Block(Object):
         #Grab mask for collision detection
         self.mask = pygame.mask.from_surface(self.image)
 
-#Class for generating platforms
-class Platform(Object):
-    def __init__(self,x,y,size,x_size,y_size):
-        super().__init__(x,y,size,size)
-        #function for loading platform (using get platform function) then blitting it 
-            #CAN DECLARE SIZE HERE, good if we dont have equal width and height of obj
-        plat_onscreen = get_platform(x_size,y_size)
-        #Blit image onto surface
-        self.image.blit(plat_onscreen, (x,y))
-
-        #Grab mask for collision detection
-        self.mask = pygame.mask.from_surface(self.image)
-
 #Class for generating text
 class Text(Object):
     def __init__(self,x,y,size):
@@ -90,6 +77,52 @@ class Text(Object):
         #self.image.blit(self.image, (0,0))
         self.mask = pygame.mask.from_surface(self.image)
 
+#Class for generating platforms
+class Platform(Object):
+    def __init__(self,x,y,width,height):
+        super().__init__(x,y,width,height)
+        #function for loading platform (using get platform function) then blitting it 
+            #CAN DECLARE SIZE HERE, good if we dont have equal width and height of obj
+
+        #from Load_sprites import load_sprite_sheets
+        #self.platform = load_sprite_sheets("Terrain","",width,height)
+        #print("This is self.platform:",self.platform)
+        #self.image = self.platform["Terrain"][6] # takes the only iteration of images we want from the dict laod_sprite_sheets creates
+
+        # Updating the rectangle of the character (adjusted based on sprite used)
+        #self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
+
+        # Update mask for collision check (mask is a mapping of pixels in the sprite)
+        #self.mask = pygame.mask.from_surface(self.image)
+
+
+
+#load USING load_sprite_sheets, kinda works, but restricted to one "line" 
+        #path = join("assets","Terrain","Terrain.png")
+        #get image (load via path)
+        #self.image = pygame.image.load(path).convert_alpha()
+
+        #self.surface = pygame.Surface((width,height), pygame.SRCALPHA, 32)
+        #load a rect from x = 96 pixel, y = 0 pixel (position on Terrain.png that I want to load the image from)
+        #rect = pygame.Rect(192, 64,width,height)
+            ###x:96 y:128 is PINK BLOCK
+            ###x:96, y:0 is GREEN NORMAL BLOCK
+        #Blit the image onto the surface (but only the part of the image that I want)
+        #self.surface.blit(self.image, (0,0), rect)
+
+
+        self.width = width
+        self.height = height
+
+        #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
+        
+        #Load image
+        platform = get_platform(self.width,self.height)
+        #Blit image onto surface
+        self.image.blit(platform, (0,0))
+
+        #Grab mask for collision detection
+        self.mask = pygame.mask.from_surface(self.image)
 
 #Class for generating fire
 class Fire(Object):
@@ -161,8 +194,19 @@ def get_block(size):
     #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
     return pygame.transform.scale2x(surface)
 
+def clip_block(surface, x, y, x_size, y_size): #Get a part of the image
+        # x, y = position of image on original surface
+        # x_size,y_size = new size of image 
+    handle_surface = surface.copy() #Sprite that will get process later
+    clipRect = pygame.Rect(x,y,x_size,y_size) #Part of the image
+    handle_surface.set_clip(clipRect) #Clip or you can call cropped
+    image = surface.subsurface(handle_surface.get_clip()) #Get subsurface
+    return image.copy() #Return
+
+
+
 #Function for loading block images
-def get_platform(x_size,y_size):
+def get_platform(width,height):
     path = join("assets","Terrain","Terrain.png")
     #get image (load via path)
     image = pygame.image.load(path).convert_alpha()
@@ -173,16 +217,32 @@ def get_platform(x_size,y_size):
         ###x:96 y:128 is PINK BLOCK 
         ###x:96, y:0 is GREEN NORMAL BLOCK
     #load a surface
-    surface = pygame.Surface((x_size,y_size), pygame.SRCALPHA, 32)
-    #load a rect from x = 192 pixel, y = 60, because of grey platform dimensions
-    rect = pygame.Rect(0,0,x_size,y_size)
+    #Create a new surface
+
+    surface = pygame.Surface((width, height), pygame.SRCALPHA, 32) #image size
+
+    #X and Y are horizontal and vertical dimensions in px respectively.
+    rect = pygame.Rect(192,64, width,height)
+    #Blit the image on the surface
+   
+    surface.blit(image, (0,0), rect)
+    #surface.blit(image, (192, 64), (0, 0, 16, 48) )
+    #surface.blit(image, (x, y), (cut_x, cut_y, x_size, y_size) )
+    #x and y are the distance from the top left corner. This places the image on the surface x px down and y px left.
+
+    #cut_x and cut_y are the cropped part of the image from the top left corner. cut_x px down, cut_y px left.
+
+    #x_size,y_size and F define the image size.
+    #load a rect from x = 192 pixel, y = 64, because of grey platform dimensions
+                            #platform_rect = clip_block(surface, x=192,y=60, x_size=16,y_size=48) # call clip_block to get new image we want
         ###x:96 y:128 is PINK BLOCK
         ###x:96, y:0 is GREEN NORMAL BLOCK
-    #Blit the image onto the surface (but only the part of the image that I want; rect)
-    surface.blit(image, (0,0), rect)
 
+    
+
+    #returning the surface on which the image of the block is blit'ed, but then scaled up by 2
     return pygame.transform.scale2x(surface)
-
+  
 
 
 

@@ -1,9 +1,19 @@
 #See Config.py for list of module initializations 
 from Config import *
-FPS = 60 #Cant import these variables from Config for some reason
+
+
+import pygame
+
+###Global variables #Cant import these variables from Config for some reason
+FPS = 60 
 PLAYER_VEL = 5 
 WIDTH, HEIGHT = 1280, 720
-import pygame
+block_size = 96
+offset_x = 0
+offset_y = 0 
+Y_scroll_area_width = 200
+X_scroll_area_width = 300
+
 
 pygame.init()
 #Set Caption (working title: Children of Anor), and key parameters
@@ -38,7 +48,9 @@ def PB_init():
     pause_button.update(window) #Handle pause button interaction
     return pause_button
 
-###FUNCTIONS FOR DRAWING GAME###
+
+
+###FUNCTION FOR DRAWING GAME###
 
 def draw (window,background,bg_image,player,objects,offset_x,offset_y):
 
@@ -47,11 +59,24 @@ def draw (window,background,bg_image,player,objects,offset_x,offset_y):
         #Passing position that we want to draw at (tile) and also passing the image that we want to draw
         #Can loop because we made tile a tuple in Background.py
         window.blit(bg_image, tile)
-        
+
+    ###Failed idea for drawing the game_map here, the arguement must be a rect style object when passed into draw function
+    #For each key value pair in dictionary, we need to grab the xy co ordinate (key; an array) and the value (block object)
+    #for keys,values in game_map.items():
+    #    coordinates = keys.split(";")
+    #    #make an object using the coordinates 
+    #    make_a_block = Platform(coordinates[0],coordinates[1],96,32)
+    #    print("THis is make_a_block;",type(make_a_block))
+    #    objects.append(make_a_block)
+
     #Draw objects
     for obj in objects:
         obj.draw(window,offset_x,offset_y)
     
+    #Draw objects in game_map
+    
+    
+
     #Update window with pause button THIS ALREADY DRAWS THE BUTTON
     #call button_init to make the button
     Pause_onscreen = PB_init()
@@ -64,8 +89,9 @@ def draw (window,background,bg_image,player,objects,offset_x,offset_y):
     #Update each frame, clears screen each frame
     pygame.display.update()
 
-
+###Drawing background tiles
 def get_background(name):
+    """draws background tiles using Background image in assets folder"""
     #gets image path
     image = pygame.image.load(join("assets", "Background", name))
 
@@ -86,6 +112,39 @@ def get_background(name):
     #Return the image paths and their tile positions
     return tiles, image
 
+###renders game world chunks 
+# Chunk storage
+generated_chunks = {}
+CHUNK_OFFSET = 128  # How much we generate offscreen to allow for smooth scrolling
+# Screen settings
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+CHUNK_WIDTH = 640  # Width of each chunk
+CHUNK_HEIGHT = 720  # Height of each chunk
+TILE_SIZE = 64  # Size of each tile
+
+# Colors
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+
+objects = []
+# Function to generate a chunk
+def generate_chunk(chunk_x):
+    chunk_data = []
+    
+    # Let's generate platforms at random y positions within this chunk
+    for _ in range(random.randint(5, 10)):  # Random number of platforms
+        platform_x = random.randint(chunk_x * CHUNK_WIDTH, (chunk_x + 1) * CHUNK_WIDTH - TILE_SIZE)
+        platform_y = random.randint(100, SCREEN_HEIGHT - 100)
+        tile_type = 0
+        if _ in range(random.randint(5,10)):
+            tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
+        
+        chunk_data.append((platform_x, platform_y)) #,tile_type
+    
+    return chunk_data
+
+    # chunks are stored in this data format 
 
 ###Functions for handling movement of player/sprites in game ###
 
@@ -420,16 +479,9 @@ def main_CoA(window):
     #Create player object
     player = Player(100,100,50,50)
 
-    ###Clickables
-    #pause button
-    #Loaded image at the start of script
-    #pause_image = pygame.image.load("assets\Menu\Buttons\Settings.png") # 21 x 22 pxl
-    #Init button
-    #pause_button = Button(image=pause_image, pos=(980, 40), 
-    #                    text_input=None, font=get_font(75), base_color="White", hovering_color="Green")
-   
-    ###Enviornment###
-    
+
+
+    ####HARD CODE WORLD ENV
     #Creating a floor by creating blocks to left and right of a point at the bottom of the screen
     floor = [Block(i* block_size, HEIGHT - block_size,block_size)
              for i in range(-WIDTH//block_size, WIDTH * 2 // block_size)
@@ -437,32 +489,27 @@ def main_CoA(window):
 
     ###PLATFORMS###
     ###floating platforms at 8* height-block_size
-    air_blocks=[Block(block_size * i, HEIGHT-block_size *8,block_size)
-    for i in range(0,block_size-48,4)] 
+    #air_blocks=[Block(block_size * i, HEIGHT-block_size *8,block_size)
+    #for i in range(0,block_size-48,4)] 
 
     #First few blocks
-    blocks = [#Block(block_size*3,HEIGHT-block_size*4,block_size),
+    #blocks = [#Block(block_size*3,HEIGHT-block_size*4,block_size),
               #Block(block_size*5,HEIGHT-block_size*4,block_size),
-              Block(block_size*7,HEIGHT-block_size*4,block_size),
-              Block(block_size*10,HEIGHT-block_size*6,block_size)
-              ]
+    #          Block(block_size*7,HEIGHT-block_size*4,block_size),
+    #          Block(block_size*10,HEIGHT-block_size*6,block_size)
+    #          ]
     
-    #First platform 
-    
-    #platform_x = 16
-    #platform_y = 48
-        
         #platform init requirements
         #self,x,y,width,height
             #x,y positions on screen
             #x_size, y_size dimensions of image
      
-    first_platform = Platform((WIDTH - block_size*4),(HEIGHT-block_size*2),96,32) 
-    [Block(block_size * i, HEIGHT-block_size *8,block_size)
-    for i in range(0,block_size-48,4)]
+    #first_platform = Platform((WIDTH - block_size*4),(HEIGHT-block_size*2),96,32) 
+    #[Block(block_size * i, HEIGHT-block_size *8,block_size)
+    #for i in range(0,block_size-48,4)]
 
-    platforms = [Platform(WIDTH-block_size*8, block_size* i,96,32)
-                 for i in range(0,block_size-48,4)]
+    #platforms = [Platform(WIDTH-block_size*8, block_size* i,96,32)
+    #             for i in range(0,block_size-48,4)]
     #first_platform = [Platform(i* platform_size, HEIGHT//2,platform_size)
     #         for i in range(-WIDTH//platform_size, WIDTH * 2 // platform_size)]
     #all_platforms = [Platform(i* block_size, HEIGHT//2,block_size)
@@ -484,25 +531,35 @@ def main_CoA(window):
 
     #Making a list of objects being drawn, passing floor into this list too
     #This list is used to draw objects in the game loop
-    objects = [*floor, *blocks, *air_blocks, Block(0,HEIGHT-block_size*2,block_size),
+    objects = [*floor, #*blocks, *air_blocks, 
+               Block(0,HEIGHT-block_size*2,block_size),
                #This block is roughly in the middle of the screen
                Block(block_size*3,HEIGHT-block_size*4,block_size),
-               fire,first_platform, *platforms]
+               Block(block_size*4,HEIGHT-block_size*5,block_size),
+               fire,
+               #first_platform, *platforms
+               ]
 
 
+    #Creating scrolling backgrounds
+    #By offsetting how we draw the background, we can make it look like we scroll through the background
     #Creating scrolling backgrounds
     #By offsetting how we draw the background, we can make it look like we scroll through the background
     offset_x = 0
     offset_y = 0 ### IMPLEMENT Y SCROLLING HERE
     Y_scroll_area_width = 200
     X_scroll_area_width = 300
+    
+    counting_gamemap = 0
 
     #### Main game loop###
     run = True
     while run:
         clock.tick(FPS)
 
-        #If we close the window, the game will end
+        
+            
+        #Event handling 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -533,12 +590,46 @@ def main_CoA(window):
                     game = Game() #Run Game class from GameStateManager
                     game.run()
 
+
+        ###Generate enviornment:
+        tile_index = {1:Block,
+                        2:Platform #-> takes different parameters so we have to blit differently 
+                        }
+        ###Handle world gen and drawing:
+        #Rendering
+        #Find all chunk IDs on screen
+        #if offset_y > -HEIGHT * 
+        #if (round(offset_y) * -1) / 360 != float:
+
+        # Determine which chunks to generate based on player's position
+        current_chunk = (player.rect.top + round(offset_y)) // CHUNK_WIDTH
+        
+        for chunk_x in range(current_chunk - 1, current_chunk + 2):  # Generate chunks ahead and behind
+            if chunk_x not in generated_chunks:
+                generated_chunks[chunk_x] = generate_chunk(chunk_x)
+
+        # Clear screen
+        #window.fill(WHITE)
+
+        # Draw generated chunks
+        for chunk_x in generated_chunks:
+            chunk_data = generated_chunks[chunk_x]
+            #print(chunk_x)
+            # Function to draw the chunk
+        
+        for platform in chunk_data:
+            #draws green boxes where platforms will go 
+            #can init and draw platforms here 
+            #pygame.draw.rect(window, GREEN, (platform[0], platform[1], TILE_SIZE, TILE_SIZE))
+            objects.append(Platform(platform[0],platform[1],96,32))
+
         #Run the animation loops, handle movement, draw each frame with the list of objects
         player.loop(FPS)  #runs player
         fire.loop()       #runs fire 
         handle_move(player,objects) #handle movement via input
-        draw(window, background, bg_image, player,objects,offset_x,offset_y)
-        #window.blit(Button_text, Button_rect)   #draw pause button (after game frame) ###NOT WORKING AS INTENDED ###
+
+        draw(window, background, bg_image,player,objects,offset_x,offset_y)
+    
         PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
         Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
         Pause_onscreen.update(window) #Handle pause button interaction
@@ -556,11 +647,18 @@ def main_CoA(window):
         #Handles vertical scrolling 
         if ((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)or (
                 (player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+        #if ((player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
                 #CAN ADD OR STATEMENT TO ADD DOWNWARD SCROLLING
+                #if ((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)or (
+                #(player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
             ###JUMP CUT to next screen###
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
             offset_y += player.y_vel
+        
+
+
+
     pygame.quit()
     quit()
 

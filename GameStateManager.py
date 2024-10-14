@@ -9,6 +9,15 @@ from Object import *
 
 from button import Button
 
+###Global variables #Cant import these variables from Config for some reason
+FPS = 60 
+PLAYER_VEL = 5 
+WIDTH, HEIGHT = 1080, 720
+block_size = 96
+offset_x = 0
+offset_y = 0 
+Y_scroll_area_width = 200
+X_scroll_area_width = 300
 
 #Import main game functions 
 from CoA_Run import *

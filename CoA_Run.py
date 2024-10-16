@@ -119,7 +119,8 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 CHUNK_WIDTH = 640  # Width of each chunk
 CHUNK_HEIGHT = 720  # Height of each chunk
-TILE_SIZE = 64  # Size of each tile
+PLATFORM_WIDTH = 96  # Size of each tile
+PLATFORM_HEIGHT = 32
 
 # Colors
 WHITE = (255, 255, 255)
@@ -131,11 +132,12 @@ def generate_chunk(chunk_x):
     chunk_data = []
     
     # Let's generate platforms at random y positions within this chunk
-    for _ in range(random.randint(5, 10)):  # Random number of platforms
-        platform_x = random.randint(chunk_x * CHUNK_WIDTH, (chunk_x + 1) * CHUNK_WIDTH - TILE_SIZE)
-        platform_y = random.randint(100, SCREEN_HEIGHT - 100)
+    for _ in range(random.randint(7, 10)):  # Random number of platforms
+        
+        platform_x = random.randrange((chunk_x * CHUNK_WIDTH), ((chunk_x + 1) * CHUNK_WIDTH - PLATFORM_WIDTH),96)
+        platform_y = random.randrange(250, (SCREEN_HEIGHT - PLATFORM_HEIGHT - 200), 64)
         tile_type = 0
-        if _ in range(random.randint(5,10)):
+        if _ in range(random.randint(5,25)):
             tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
 
         chunk_data.append((platform_x, platform_y)) #,tile_type

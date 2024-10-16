@@ -11,11 +11,29 @@ WIDTH, HEIGHT = 1280, 720
 block_size = 96
 offset_x = 0
 offset_y = 0 
-Y_scroll_area_width = 200
-X_scroll_area_width = 300
+Y_scroll_area_width = 200 
+X_scroll_area_width = 300 #at what distance from the sides of screen we start scrolling 
 
-player_world_x = 0  #track pos of player in world 
+player_world_x = 0  #track x pos of player in world 
+player_world_y = 0  #track y pos of player in world 
 
+# Chunk storage
+generated_chunks = {}
+CHUNK_OFFSET = 128  # How much we generate offscreen to allow for smooth scrolling
+# Screen settings
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+
+#Chunk settings 
+CHUNK_WIDTH = 720  # Width of each chunk
+CHUNK_HEIGHT = 180  # Height of each chunk
+TILE_SIZE = 48
+PLATFORM_WIDTH = 96  # Size of each tile
+PLATFORM_HEIGHT = 32
+
+# Colors
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
 
 pygame.init()
 #Set Caption (working title: Children of Anor), and key parameters
@@ -111,34 +129,19 @@ def get_background(name):
     return tiles, image
 
 ###renders game world chunks 
-# Chunk storage
-generated_chunks = {}
-CHUNK_OFFSET = 128  # How much we generate offscreen to allow for smooth scrolling
-# Screen settings
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
-CHUNK_WIDTH = 640  # Width of each chunk
-CHUNK_HEIGHT = 720  # Height of each chunk
-PLATFORM_WIDTH = 96  # Size of each tile
-PLATFORM_HEIGHT = 32
 
-# Colors
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-
-objects = []
-# Function to generate a chunk
-def generate_chunk(chunk_x):
+def generate_chunk(chunk_x,chunk_y):
+    """Function to generate a chunk"""
     chunk_data = []
     
     # Let's generate platforms at random y positions within this chunk
-    for _ in range(random.randint(7, 10)):  # Random number of platforms
+    for _ in range(random.randint(10, 15)):  # Random number of platforms 
         
-        platform_x = random.randrange((chunk_x * CHUNK_WIDTH), ((chunk_x + 1) * CHUNK_WIDTH - PLATFORM_WIDTH),96)
-        platform_y = random.randrange(250, (SCREEN_HEIGHT - PLATFORM_HEIGHT - 200), 64)
+        platform_x = random.randrange((chunk_x * CHUNK_WIDTH), ((chunk_x + 1) * CHUNK_WIDTH - TILE_SIZE ), 192)
+        platform_y = random.randrange((chunk_y * CHUNK_HEIGHT), ((chunk_y + 1) * CHUNK_HEIGHT - TILE_SIZE + 128), 128) ###implimented chunk_y, now adjust code accordingly 
         tile_type = 0
-        if _ in range(random.randint(5,25)):
-            tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
+        #if _ in range(random.randint(5,25)):
+        #    tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
 
         chunk_data.append((platform_x, platform_y)) #,tile_type
     
@@ -427,12 +430,14 @@ def collide(player,objects,dx):
 #Function for handling Movement of player in relation to objects
 def handle_move(player,objects):
     #Gets pressed keys
-    global player_world_x # prevent unbound error 
+    #global player_world_y # prevent unbound error 
     keys = pygame.key.get_pressed()
 
     #First we set player velocity to 0, because the player methods set a new velocity and otherwise
     # will continue in one direction until reset
     player.x_vel = 0
+    
+    #To stop player from going out of bounds, could make an object alongside border of screen and collide player with it
 
     #Checking for collision in x direction
     collide_left = collide(player,objects,-PLAYER_VEL*2) #Note neg X velocity because left is NEG x co ordinate
@@ -473,8 +478,6 @@ def main_CoA(window):
         #Purple.png
         #Yellow.png
 
-    global player_world_x  # declare local var to prevent unbound error 
-
     #Block size for floor
     block_size = 96
     platform_size = 64
@@ -483,11 +486,11 @@ def main_CoA(window):
     #By offsetting how we draw the background, we can make it look like we scroll through the background
     #Creating scrolling backgrounds
     #By offsetting how we draw the background, we can make it look like we scroll through the background
-    offset_x = 0
-    offset_y = 0 ### IMPLEMENT Y SCROLLING HERE
+    offset_x = 1
+    offset_y = 0
     Y_scroll_area_width = 200
-    X_scroll_area_width = 300
-
+    #X_scroll_area_width = 300
+    global player_world_x,player_world_y # declare local var to prevent unbound error 
 
     #Create player object
     player = Player(100,100,50,50)
@@ -590,6 +593,7 @@ def main_CoA(window):
     #### Main game loop###
     run = True
     while run:
+        
         clock.tick(FPS)
 
         #Event handling 
@@ -628,53 +632,72 @@ def main_CoA(window):
         #                }
         ###Handle world gen and drawing:
 
-        # Determine which chunks to generate based on the position of the player in the world
-        #current_chunk = round(SCREEN_WIDTH // 2 - offset_x), round(SCREEN_HEIGHT // 2 - offset_y)
-        current_chunk = round(player_world_x // CHUNK_WIDTH)  # Find the current chunk based on world position
-        #current_chunk = player_pos[0] // CHUNK_WIDTH
         
+        #current_chunk = round(player_world_y // CHUNK_WIDTH)  # Find the current chunk based on world position
+        
+        # Determine which chunks to generate based on the position of the player in the world
+        current_chunk_x = math.floor(player_world_x / CHUNK_WIDTH)
+        current_chunk_y = math.floor(player_world_y / CHUNK_HEIGHT) #math.floor correctly rounds negative numbers 
         #generated_chunks = {} # reset chunks each frame, so that
+        
         gend_a_chunk = False 
-        for chunk_x in range(current_chunk - 1, current_chunk + 3):  # Generate chunks ahead and behind
-            if chunk_x not in generated_chunks:
-                gend_a_chunk = True 
-                generated_chunks[chunk_x] = generate_chunk(chunk_x)
-                #print("This is chunk_x: ",chunk_x)
-                #print("This is generated_chunks: ",generated_chunks)
-                #print("This is generated chunks keys: ",generated_chunks.keys())
+        for chunk_x in range(int(current_chunk_x) - 1, int(current_chunk_x) + 1):  # Symmetric chunk generation
 
+            ### ISSUE HERE: if the above values that - or + the range parameters it ONLY draws either the left or the right of the middle of the screen
+
+
+
+            for chunk_y in range(int(current_chunk_y) - 1, int(current_chunk_y) + 2): #Generate chunks above and below
+                if (chunk_x,chunk_y) not in generated_chunks:
+                    gend_a_chunk = True 
+                    generated_chunks[(chunk_x, chunk_y)] = generate_chunk(chunk_x, chunk_y)
+                    #print("This is chunk_x: ",chunk_x)
+                    #print("This is generated_chunks: ",generated_chunks)
+                    #print("This is generated chunks keys: ",generated_chunks.keys())
+                    
+        print(f"Generating chunk: {chunk_x}, {chunk_y}")
         kill_these_chunks = []
         index_objpos = {}
         if gend_a_chunk == True:
         #if we generate a chunk, clear the dictionary of any chunks that arent in the screen range 
             current_keys = generated_chunks.keys()
+            print("This is current keys:",current_keys)
             for badkeys in current_keys:
-                if badkeys not in range(current_chunk -1, current_chunk + 3):
+                #badkeys[0] not in range(round(current_chunk_x - 2), round(current_chunk_x + 1))
+                if badkeys[1] not in range(round(current_chunk_y - 1), round(current_chunk_y + 3)): # check the y value of chunk is out of range 
+                    
+                    print("This is the range of allowed y values: ", range(round(current_chunk_y - 1), round(current_chunk_y + 3)))
+                    print("This is the bad y value:",badkeys[1])
                     kill_these_chunks.append(badkeys)
 
         #print(f"This is generated chunks after everything:",generated_chunks)
         
         # Add platforms from generated chunks to objects list if we made a new chunk
-            for chunk_x in generated_chunks:
-                chunk_data = generated_chunks[chunk_x]
+            for indexpos in generated_chunks:
+                chunk_data = generated_chunks[chunk_x,chunk_y]
                 #print(chunk_x)
                 # Function to draw the chunk
                 list_obj_indexes = []
-                for platform in chunk_data:
-                    #draws green boxes where platforms will go 
+                for platform in chunk_data: 
                     #can init and draw platforms here 
-                    #pygame.draw.rect(window, GREEN, (platform[0], platform[1], TILE_SIZE, TILE_SIZE))
                     #make a dictionary corresponding to the chunk x that contains the generated objects, so we can iterate through it and manage it
-                    platform = Platform(platform[0],platform[1],96,32)
+                    #print("This is platform;",platform)
+                    platform_x = (platform[0] ) #removed offset_x since there isnt any side scrolling in this version
+                    platform_y = (platform[1] + offset_y)
+                    #print(f"This is platform x {platform_x} and platform y {platform_y}")
+                    platform = Platform(platform_x,platform_y,96,32)
+                    #platform = Platform(platform_x,platform_y,96,32)
                     objects.append(platform)
                     obj_index = objects.index(platform)
                     list_obj_indexes.append(obj_index)
-                
-                index_objpos[chunk_x] = list_obj_indexes #makes a dictionary to relate the position of the objects in the objects list to the chunks they are drawn in 
-
+        #        
+                index_objpos[indexpos] = list_obj_indexes #makes a dictionary to relate the position of the objects in the objects list to the chunks they are drawn in 
+            print("This is generated chunks: ",generated_chunks)
         #remove chunks from generated_chunks dict if they are out of our range of vision
+
         for chunk in kill_these_chunks:
-            if int(chunk) in generated_chunks.keys():
+            print("This is chunk in kill these chunks section:", chunk)
+            if chunk in generated_chunks.keys():
                 print("killed this chunk: ",generated_chunks[chunk])
                 #generated_chunks.pop(items)
                 del generated_chunks[chunk]
@@ -683,26 +706,20 @@ def main_CoA(window):
                 ###This takes care of most of the memory issues! 
                 #Now iterate through objects list and kick out index members related to the chunk 
                 #ONLY if we are removing chunks 
-                print("This is index_objpos dict: ",index_objpos)
-                for obj_indexes in index_objpos[chunk]:
-                    if int(obj_indexes) in index_objpos[chunk] and int(chunk) in generated_chunks.keys():
-                        #print("Removing this from obj_indexes:",obj_indexes)
-                        print("This is length of objects list:",len(objects))
-                        del objects[obj_indexes]
-                        print("This is the new length of objects: ",len(objects))
-                    else:
-                        pass
+                #print("This is index_objpos dict: ",index_objpos)
+                #for obj_indexes in index_objpos[chunk]:
+                #    if obj_indexes in index_objpos[chunk] and chunk in generated_chunks.keys():
+                #        #print("Removing this from obj_indexes:",obj_indexes)
+                #        print("This is length of objects list:",len(objects))
+                #        del objects[obj_indexes]
+                #        print("This is the new length of objects: ",len(objects))
+                #    else:
+                #        pass
                     #index_objpos = {} #reset index dictionary??
             else:
                 pass
                 #print(f"The {str(items)} key was not in {generated_chunks.keys()}")
 
-
-        ###Final layer of safety for the memory issues:
-        if len(objects) > 700:
-
-            for members in range(200): #deletes the first 200 objects once we exceed 700 objects 
-                del objects[members]
 
         # Clear screen before drawing next frame
         window.fill(WHITE)
@@ -719,32 +736,36 @@ def main_CoA(window):
         Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
         Pause_onscreen.update(window) #Handle pause button interaction
 
+        #if ((player.rect.right - offset_x >= WIDTH - X_scroll_area_width) and player.x_vel > 0) or (
+        #    (player.rect.left - offset_x <= X_scroll_area_width) and player.x_vel < 0):
+        #    offset_x += player.x_vel
+        #    player_world_x += player.x_vel
         #Handling horizontal scrolling background
             #if im going right im checking if im near the boundary then offsetting x accordingly
             #If im going left, I am checking the other boundary and adjusting x accordingly
-        if ((player.rect.right - offset_x >= WIDTH - X_scroll_area_width) and player.x_vel > 0) or (
-                (player.rect.left - offset_x <= X_scroll_area_width) and player.x_vel < 0):
+        #if ((player.rect.right - offset_x >= WIDTH - X_scroll_area_width) and player.x_vel > 0) or (
+        #        (player.rect.left - offset_x <= X_scroll_area_width) and player.x_vel < 0):
             ###JUMP CUT to next screen###
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
-            offset_x += player.x_vel
-            player_world_x += player.x_vel
+        #    offset_x += player.x_vel
+            
 
         #Handles vertical scrolling 
-        if ((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)or (
-                (player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
-        #if ((player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+        if ((player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+            #add this for downward scrolling or 
+            #    
+        #:((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)
                 #CAN ADD OR STATEMENT TO ADD DOWNWARD SCROLLING
-                #if ((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)or (
-                #(player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+            
             ###JUMP CUT to next screen###
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
             offset_y += player.y_vel
+            player_world_y += player.y_vel
+           
+        #print("This is the length of objects: ", len(objects))
         
-        print("This is the length of objects: ", len(objects))
-        #reset objects at the end of game loop
-        #objects = []
 
 
     pygame.quit()

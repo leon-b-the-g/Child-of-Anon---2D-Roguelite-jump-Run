@@ -7,7 +7,7 @@ import pygame
 ###Global variables #Cant import these variables from Config for some reason
 FPS = 60 
 PLAYER_VEL = 5 
-WIDTH, HEIGHT = 1280, 720
+WIDTH, HEIGHT = 1340, 720
 block_size = 96
 offset_x = 0
 offset_y = 0 
@@ -21,11 +21,11 @@ player_world_y = 0  #track y pos of player in world
 generated_chunks = {}
 CHUNK_OFFSET = 128  # How much we generate offscreen to allow for smooth scrolling
 # Screen settings
-SCREEN_WIDTH = 1280
+SCREEN_WIDTH = 1340
 SCREEN_HEIGHT = 720
 
 #Chunk settings 
-CHUNK_WIDTH = 720  # Width of each chunk
+CHUNK_WIDTH = 1340  # Width of each chunk
 CHUNK_HEIGHT = 180  # Height of each chunk
 TILE_SIZE = 48
 PLATFORM_WIDTH = 96  # Size of each tile
@@ -41,7 +41,7 @@ pygame.display.set_caption("Children of Anor")
 
 #Drawing window
 #WIDTH AND HEIGHT ARE BEING WIERD
-window = pygame.display.set_mode((1280, 720))
+window = pygame.display.set_mode((1340, 720))
 
 
 #Pulls a font ###FIND A BETTER PLACE FOR THIS
@@ -138,13 +138,24 @@ def generate_chunk(chunk_x,chunk_y):
     for _ in range(random.randint(10, 15)):  # Random number of platforms 
         
         platform_x = random.randrange((chunk_x * CHUNK_WIDTH), ((chunk_x + 1) * CHUNK_WIDTH - TILE_SIZE ), 192)
-        platform_y = random.randrange((chunk_y * CHUNK_HEIGHT), ((chunk_y + 1) * CHUNK_HEIGHT - TILE_SIZE + 128), 128) ###implimented chunk_y, now adjust code accordingly 
+        platform_y = random.randrange((chunk_y * CHUNK_HEIGHT), ((chunk_y + 1) * CHUNK_HEIGHT - TILE_SIZE), 128) ###implimented chunk_y, now adjust code accordingly 
         tile_type = 0
         #if _ in range(random.randint(5,25)):
         #    tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
 
         chunk_data.append((platform_x, platform_y)) #,tile_type
-    
+
+    #Impliment other biome here 
+    #if chunk_y < -5000:
+         
+    #    platform_x = random.randrange((chunk_x * CHUNK_WIDTH), ((chunk_x + 1) * CHUNK_WIDTH - TILE_SIZE ), 192)
+    #    platform_y = random.randrange((chunk_y * CHUNK_HEIGHT), ((chunk_y + 1) * CHUNK_HEIGHT - TILE_SIZE + 128), 128) ###implimented chunk_y, now adjust code accordingly 
+        tile_type = 0
+        #if _ in range(random.randint(5,25)):
+        #    tile_type = 1 # can integrate tile_type here for tile index, different platforms in future 
+
+    #    chunk_data.append((platform_x, platform_y)) #,tile_type
+
     return chunk_data
 
     # chunks are stored in this data format 
@@ -630,44 +641,40 @@ def main_CoA(window):
         #tile_index = {1:Block,
         #                2:Platform #-> takes different parameters so we have to blit differently 
         #                }
+        
+        
         ###Handle world gen and drawing:
-
+        current_chunk_x = math.floor(player.rect.right / CHUNK_WIDTH)
+        current_chunk_y = math.floor(player.rect.top / CHUNK_HEIGHT) #math.floor correctly rounds negative numbers 
         
-        #current_chunk = round(player_world_y // CHUNK_WIDTH)  # Find the current chunk based on world position
-        
-        # Determine which chunks to generate based on the position of the player in the world
-        current_chunk_x = math.floor(player_world_x / CHUNK_WIDTH)
-        current_chunk_y = math.floor(player_world_y / CHUNK_HEIGHT) #math.floor correctly rounds negative numbers 
-        #generated_chunks = {} # reset chunks each frame, so that
+        #print("This is current_chunk_x:",current_chunk_x)
+        #print("This is current_chunk_y:",current_chunk_y)
         
         gend_a_chunk = False 
-        for chunk_x in range(int(current_chunk_x) - 1, int(current_chunk_x) + 1):  # Symmetric chunk generation
-
+        for chunk_x in range(int(current_chunk_x ) -1, int(current_chunk_x) + 1) :  # Symmetric chunk generation
             ### ISSUE HERE: if the above values that - or + the range parameters it ONLY draws either the left or the right of the middle of the screen
 
-
-
-            for chunk_y in range(int(current_chunk_y) - 1, int(current_chunk_y) + 2): #Generate chunks above and below
+            for chunk_y in range(int(current_chunk_y) - 1, int(current_chunk_y) + 1) : #Generate chunks above and below
                 if (chunk_x,chunk_y) not in generated_chunks:
                     gend_a_chunk = True 
                     generated_chunks[(chunk_x, chunk_y)] = generate_chunk(chunk_x, chunk_y)
                     #print("This is chunk_x: ",chunk_x)
                     #print("This is generated_chunks: ",generated_chunks)
                     #print("This is generated chunks keys: ",generated_chunks.keys())
-                    
-        print(f"Generating chunk: {chunk_x}, {chunk_y}")
+   
+        #print(f"Generating chunk: {chunk_x}, {chunk_y}")
         kill_these_chunks = []
         index_objpos = {}
         if gend_a_chunk == True:
         #if we generate a chunk, clear the dictionary of any chunks that arent in the screen range 
             current_keys = generated_chunks.keys()
-            print("This is current keys:",current_keys)
+            #print("This is current keys:",current_keys)
             for badkeys in current_keys:
                 #badkeys[0] not in range(round(current_chunk_x - 2), round(current_chunk_x + 1))
                 if badkeys[1] not in range(round(current_chunk_y - 1), round(current_chunk_y + 3)): # check the y value of chunk is out of range 
                     
-                    print("This is the range of allowed y values: ", range(round(current_chunk_y - 1), round(current_chunk_y + 3)))
-                    print("This is the bad y value:",badkeys[1])
+                    #print("This is the range of allowed y values: ", range(round(current_chunk_y - 1), round(current_chunk_y + 3)))
+                    #print("This is the bad y value:",badkeys[1])
                     kill_these_chunks.append(badkeys)
 
         #print(f"This is generated chunks after everything:",generated_chunks)
@@ -685,20 +692,28 @@ def main_CoA(window):
                     platform_x = (platform[0] ) #removed offset_x since there isnt any side scrolling in this version
                     platform_y = (platform[1] + offset_y)
                     #print(f"This is platform x {platform_x} and platform y {platform_y}")
-                    platform = Platform(platform_x,platform_y,96,32)
-                    #platform = Platform(platform_x,platform_y,96,32)
-                    objects.append(platform)
-                    obj_index = objects.index(platform)
-                    list_obj_indexes.append(obj_index)
-        #        
+                    if chunk_y > -2000: #first biome 
+                        platform = Platform(platform_x,platform_y,96,32)
+                        #platform = Platform(platform_x,platform_y,96,32)
+                        objects.append(platform)
+                        obj_index = objects.index(platform)
+                        list_obj_indexes.append(obj_index)
+
+                    #IMPLIMENT BIOME HERE
+                    elif chunk_y <= -2000:
+                        platform = Block(platform_x,platform_size,block_size)
+                        objects.append(platform)
+                        obj_index = objects.index(platform)
+                        list_obj_indexes.append(obj_index)
+                
                 index_objpos[indexpos] = list_obj_indexes #makes a dictionary to relate the position of the objects in the objects list to the chunks they are drawn in 
-            print("This is generated chunks: ",generated_chunks)
+            #print("This is generated chunks: ",generated_chunks)
         #remove chunks from generated_chunks dict if they are out of our range of vision
 
         for chunk in kill_these_chunks:
-            print("This is chunk in kill these chunks section:", chunk)
+            #print("This is chunk in kill these chunks section:", chunk)
             if chunk in generated_chunks.keys():
-                print("killed this chunk: ",generated_chunks[chunk])
+                #print("killed this chunk: ",generated_chunks[chunk])
                 #generated_chunks.pop(items)
                 del generated_chunks[chunk]
 

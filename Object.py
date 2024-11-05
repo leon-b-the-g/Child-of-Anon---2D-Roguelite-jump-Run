@@ -65,17 +65,20 @@ class Text(Object):
         super().__init__(x,y,size,size)
 
         #Load image with get_text function
-        self.letters = get_text(size)
+        self.letters = get_text()
 
         ###WORKS!!!! Put draw function here maybe to draw specific text? BUT IT WORKS!!!
-        #Blit image onto surface
-        self.image.blit(self.letters['H'][0], (0,0))
-        self.image.blit(self.letters['E'][0], (14,0))
-        self.image.blit(self.letters['H'][0], (28, 0))
-        self.image.blit(self.letters['E'][0], (42, 0))
+        
 
         #self.image.blit(self.image, (0,0))
         self.mask = pygame.mask.from_surface(self.image)
+
+    def draw_youredead(self):
+        #Blit image onto surface
+        self.image.blit(self.letters['D'][0], (0,0))
+        self.image.blit(self.letters['E'][0], (14,0))
+        self.image.blit(self.letters['A'][0], (28, 0))
+        self.image.blit(self.letters['D'][0], (42, 0))
 
 #Class for generating platforms
 class Platform(Object):
@@ -247,15 +250,16 @@ def get_platform(width,height):
 
 
 # Function for loading text sprite sheet
-def get_text(size):
+def get_text():
     #MIGHT NOT WORK BECAUSE TEXT.PNG IS ONE DIRECTORY DEEPER
-    path = join("assets", "Menu", "Text(White)(8x10).png")
-
+    #path = join("assets", "Menu\Text", "Text_White(8x10).png")
+    
     
     #loading text sprite sheet in the dimensions 8x10 (which is what we want)
+    
     from Load_sprites import load_sprite_sheets
-    all_text = load_sprite_sheets("Menu","Text",8,10)
-    print(all_text)
+    all_text = load_sprite_sheets("Menu","text_base",8,10)
+    
         #Parsing letters into dictionary, loaded:
             #Key: Text(Black)(8x10).png , Text(Black)(8x10).png
             #Value: List of Surfaces
@@ -281,9 +285,11 @@ def get_text(size):
                 letter_count += 1
                 if letter_count == 26:
                     break
-        print(ABC_dict)
+ 
 
         #Returns a perfect dictionary, with keys of letters, and values with according surfaces
         return ABC_dict
+
+
 
 

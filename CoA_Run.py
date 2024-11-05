@@ -26,7 +26,7 @@ SCREEN_HEIGHT = 720
 
 #Chunk settings 
 CHUNK_WIDTH = 1340  # Width of each chunk
-CHUNK_HEIGHT = 180  # Height of each chunk
+CHUNK_HEIGHT = 96  # Height of each chunk 
 TILE_SIZE = 48
 PLATFORM_WIDTH = 96  # Size of each tile
 PLATFORM_HEIGHT = 32
@@ -34,6 +34,10 @@ PLATFORM_HEIGHT = 32
 # Colors
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
+
+#
+RUNGAME = True
+
 
 pygame.init()
 #Set Caption (working title: Children of Anor), and key parameters
@@ -72,7 +76,8 @@ def PB_init():
 
 ###FUNCTION FOR DRAWING GAME###
 
-def draw (window,background,bg_image,player,objects,offset_x,offset_y): 
+def draw (window,background,bg_image,player
+        ,objects,offset_x,offset_y): 
 
     #drawing background:
     for tile in background:
@@ -96,13 +101,19 @@ def draw (window,background,bg_image,player,objects,offset_x,offset_y):
     #Update window with pause button THIS ALREADY DRAWS THE BUTTON
     #call button_init to make the button
     Pause_onscreen = PB_init()
-    PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
-    Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
+    #PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
+    #Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
     Pause_onscreen.update(window) #Handle pause button interaction
 
-    player.draw(window,offset_x,offset_y)
+    
+    #draw health bar
+    #player.healthbar_init()
+    #player.update_healthbar()
 
+    #health_bar.draw(window) # Refactored into player class
     #Update each frame, clears screen each frame
+    player.draw(window, offset_x,offset_y)
+    player.draw_health_bar(window)
     pygame.display.update()
 
 ###Drawing background tiles
@@ -216,6 +227,31 @@ def load_sprite_sheets(dir1,dir2,width,height,direction=False):
     return all_sprites
 
 
+###Healthbars
+class Old_HealthBar(): # refactored this to fit into the player class in future to init several healthbars 
+    def Healthbar__init__(self, x, y, w, h, max_hp):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.hp = 100
+        self.max_hp = max_hp
+
+
+    def draw_healthbar(self, surface):
+        #calculate health ratio
+        ratio = self.hp / self.max_hp
+        pygame.draw.rect(surface, "red", (self.x, self.y, self.w, self.h))
+        pygame.draw.rect(surface, "green", (self.x, self.y, self.w * ratio, self.h))
+
+    #def update_healthbar(self,new_hp):
+    #    self.hp = new_hp
+
+        #Can check if player.rect.bottom touches the bottom of the screen
+        #player.rect.bottom
+     #   if self.hp == 0:
+      #      print("self.hp is 0.")
+        #if the hp = 0, then we change gamestate to end game
 
 ####CLASS FOR PLAYER OBJECT HANDLING####
 
@@ -228,15 +264,16 @@ class Player(pygame.sprite.Sprite):
     ANIMATION_DELAY = 3 #Keeps track of delay between changing sprites
 
 
-    #Loads sprite, with directories ref. and sprite size and then whether we are having directions
-    SPRITES = load_sprite_sheets("MainCharacters","VirtualGuy",32,32,True)
    
+    SPRITES = load_sprite_sheets("MainCharacters","VirtualGuy",32,32,True)
 
-    def __init__(self, x, y, width, height):
+    def __init__(self, player_x, player_y, width, height,healthb_x,healthb_y,healthb_w,healthb_h,health,max_health):
         super().__init__()
 
         #Putting variables in a Rect (tuple with 4 variables)
-        self.rect = pygame.Rect (x,y,width,height)
+        self.rect = pygame.Rect (player_x,player_y,width,height)
+     
+        #Player vel
         self.x_vel = 0
         self.y_vel = 0
 
@@ -257,6 +294,25 @@ class Player(pygame.sprite.Sprite):
 
         ###, cleaner __init__function statement
         self.sprite = pygame.Surface((width, height), pygame.SRCALPHA)
+        
+        #self.SPRITES = load_sprite_sheets("MainCharacters","VirtualGuy",32,32,True)
+        self.mask = pygame.mask.from_surface(self.sprite)
+        #rects 
+        #self.hbrect1 = pygame.Rect (healthb_x,healthb_y,healthb_w,healthb_h)
+        #self.hbrect2 = pygame.Rect (self.healthb_x, self.healthb_y, self.healthb_w * self.ratio, self.healthb_h)
+
+        ##Healthbar properties
+        self.healthb_x = healthb_x
+        self.healthb_y = healthb_y
+        self.healthb_w = healthb_w
+        self.healthb_h = healthb_h
+        self.health = 100 - self.hit_count
+        self.max_health = max_health
+        
+        self.ratio = self.health / self.max_health
+
+        
+
 
     def jump(self):
         # negative gravity to make the player jump up
@@ -294,32 +350,6 @@ class Player(pygame.sprite.Sprite):
     def move_down(self,vel):
         self.y_vel = vel
 
-    ###PLAYER LOOP###
-    def loop (self,FPS):
-
-        #If player is falling, increment fall count by 1 OR by time falling/FPS multiplied by GRAVITY
-        #CAN CHANGE MIN VAL HERE TO CHANGE FEEL OF GRAVITY
-        ###GRAVITY TURNED: ON### Set to 0.8 to make the game feel a little floaty
-        self.y_vel += min(0.8, (self.fall_count/FPS) * self.GRAVITY)
-
-        #Moving player each frame/update each frame
-
-        self.move(self.x_vel,self.y_vel)
-
-    #If statement that checks how long player has been in I frame
-        if self.hit:
-            self.hit_count += 1
-
-        #If player has been hit for more than 2 seconds, set hit to false and reset hit count
-        if self.hit_count > FPS * 2:
-            self.hit = False
-            self.hit_count = 0
-
-        self.fall_count += 1
-        #Calling update sprite method each frame (loop iteration), to update sprite
-        ### constantly updating object with gravity, so jump "wears off"
-        self.update_sprite()
-
     def landed(self):
         #reset fall count
         self.fall_count = 0
@@ -342,8 +372,19 @@ class Player(pygame.sprite.Sprite):
         #Default
         sprite_sheet = "idle"
         #If hit, we are flashing
-        if self.hit:
+        if self.hit == True:
             sprite_sheet = "hit"
+            self.health -= 1 
+        #End game if hp = 0
+        if self.health == 0:
+            print("You are dead!")
+            from GameStateManager import GameStateManager, Game
+            run_pause = GameStateManager.set_state(state='Main_menu')
+            self.health == 100 
+            Game.run()
+            #pygame.quit()
+            
+        
         #If y velocity, we are jumping or falling
         if self.y_vel < 0:
             #jump_count 1 means jump sprite sheet is needed
@@ -365,30 +406,94 @@ class Player(pygame.sprite.Sprite):
 
         #Get the sprites from the dictionary
         sprites = self.SPRITES[sprite_sheet_name]
-
+        
         #animation count divided by animation delay, modulo the length of the sprites (roughly every 10 frames, change to second sprite etc.)
         #Is dynamic and works for any sprite sheet
 
         sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
         self.sprite = sprites[sprite_index]
+        #mask for player sprites
         self.animation_count += 1
-
+        
         #Update mask for collision check (mask is a mapping of pixels in the sprite)
-        self.update()
+          ###PLAYER LOOP###
+    def loop (self,FPS):
 
+        #If player is falling, increment fall count by 1 OR by time falling/FPS multiplied by GRAVITY
+        #CAN CHANGE MIN VAL HERE TO CHANGE FEEL OF GRAVITY
+        ###GRAVITY TURNED: ON### Set to 0.8 to make the game feel a little floaty
+        self.y_vel += min(0.8, (self.fall_count/FPS) * self.GRAVITY)
+
+        #Moving player each frame/update each frame
+
+        self.move(self.x_vel,self.y_vel)
+
+    #If statement that checks how long player has been in I frame
+        if self.hit:
+            self.hit_count += 1
+
+        #If player has been hit for more than 2 seconds, set hit to false and reset hit count
+        if self.hit_count > FPS / 2:
+            self.hit = False
+            
+        
+
+        self.fall_count += 1
+        #Calling update sprite method each frame (loop iteration), to update sprite
+        ### constantly updating object with gravity, so jump "wears off"
+        
+        self.update_sprite()
+        
+        self.update()
+        self.draw(window,offset_x,offset_y)
+    
     #Updating the rectangle of the character (adjusted based on sprite used)
     def update(self):
         #Updating the rectangle of the character (adjusted based on sprite used)
-        self.rect = self.sprite.get_rect(topleft=(self.rect.x,self.rect.y))
-        #Getting mask for collisions (mask is a mapping of pixels in the sprite)
-        self.mask = pygame.mask.from_surface(self.sprite)
+        self.rect = self.sprite.get_rect(topleft=(self.rect.x,self.rect.y)) ###MIGHT NOT BE player_x , but just x and y
 
+        #Getting mask for collisions (mask is a mapping of pixels in the sprite)
+        self.mask =  pygame.mask.from_surface(self.sprite)
+        #if self.health == 0:
+        #    print("self.hp is 0!")
+
+        if self.health != None or self.health != 0 and death_note == None: #if health 0, then:
+            from Object import Text
+            death_note = Text(self.healthb_x,self.healthb_y,TILE_SIZE)
+            
+            death_note.draw_youredead()
+    #        print("You are dead!")
+          
+    #        pygame.draw.rect(win, "red", (self.healthb_x, self.healthb_y, self.healthb_w, self.healthb_h))
+    #        pygame.draw.rect(win, "green", (self.healthb_x, self.healthb_y, self.healthb_w * self.ratio, self.healthb_h))
+    #    
+    #    else:
+            #Blit "Dead" onto surface
+            
     #Draw method for player
     def draw(self,win,offset_x,offset_y):
         #loading sprite from dictionary: sprites using update method
         #blitting on window
         win.blit(self.sprite,(self.rect.x - offset_x,self.rect.y -offset_y))
+        
+  
+    #def update_healthbar(self,win):
+    #    if self.healthb_w != None or self.healthb_w != 0:
+    #        pygame.draw.rect(win, "red", (self.healthb_x, self.healthb_y, self.healthb_w, self.healthb_h))
+    #        pygame.draw.rect(win, "green", (self.healthb_x, self.healthb_y, self.healthb_w * self.ratio, self.healthb_h))
+    #    
+    ##    self.hp = new_hp
 
+
+    def draw_health_bar(self, win):
+        bar_width = 100
+        bar_height = 10
+        fill_width = int(bar_width * (self.health / self.max_health))
+        outline_rect = pygame.Rect(10, 10, bar_width, bar_height)
+        fill_rect = pygame.Rect(10, 10, fill_width, bar_height)
+
+        pygame.draw.rect(win, (255, 0, 0), fill_rect)      # Red bar for health
+        pygame.draw.rect(win, (255, 255, 255), outline_rect, 2)  # White border for the health ba
 
 ###FUNCTIONS FOR COLLISION DETECTION###
 #CHECK VERT collision FIRST, then horizontal
@@ -474,8 +579,6 @@ def handle_move(player,objects):
 
 
 ###FUNCTION FOR MAIN GAME LOOP ####
-
-
 def main_CoA(window):
     #Keep track of loop iterations
     clock = pygame.time.Clock()
@@ -503,19 +606,19 @@ def main_CoA(window):
     #X_scroll_area_width = 300
     global player_world_x,player_world_y # declare local var to prevent unbound error 
 
-    #Create player object
-    player = Player(100,100,50,50)
+    
+    player_1 = Player(100,100,50,50,healthb_x=950,healthb_y=85,healthb_w=300,healthb_h=40,health=40, max_health = 100) #Create player object
 
     ###BUTTONS###
     Pause_onscreen = PB_init()
-
+    
     #SCREEN.fill("black") WRITE FUNCTION FOR DRAWING BACKGROUND maybe?
 
     pygame.display.update() # Update (COULD BE SOURCE OF GETTING GAME STUCK)
 
    
 
-    ###PLATFORMS###
+    ###PLATFORMS HARD CODE###
     ###floating platforms at 8* height-block_size
     #air_blocks=[Block(block_size * i, HEIGHT-block_size *8,block_size)
     #for i in range(0,block_size-48,4)] 
@@ -590,7 +693,7 @@ def main_CoA(window):
         #x,y = position, width height are dimensions
     fire = Fire(100,HEIGHT-block_size -64, 16, 32)  #Dimensions: 16x32
     fire.on()
-
+    #healthbar = player.update_healthbar(window)
 
     #Making a list of objects being drawn, passing floor into this list too
     #This list is used to draw objects in the game loop
@@ -617,8 +720,8 @@ def main_CoA(window):
                 ##if we handle the jump in the Handle move method it would break if any keys are held down
             if event.type == pygame.KEYDOWN:
                 #statement allows for double jump! Can add extra jumps or dashes here
-                if event.key == pygame.K_SPACE and player.jump_count < 2:
-                    player.jump()
+                if event.key == pygame.K_SPACE and player_1.jump_count < 2:
+                    player_1.jump()
 
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -644,23 +747,23 @@ def main_CoA(window):
         
         
         ###Handle world gen and drawing:
-        current_chunk_x = math.floor(player.rect.right / CHUNK_WIDTH)
-        current_chunk_y = math.floor(player.rect.top / CHUNK_HEIGHT) #math.floor correctly rounds negative numbers 
+        current_chunk_x = math.floor(player_1.rect.right / CHUNK_WIDTH)
+        current_chunk_y = math.floor(player_1.rect.top / CHUNK_HEIGHT) #math.floor correctly rounds negative numbers 
         
         #print("This is current_chunk_x:",current_chunk_x)
         #print("This is current_chunk_y:",current_chunk_y)
         
         gend_a_chunk = False 
-        for chunk_x in range(int(current_chunk_x ) -1, int(current_chunk_x) + 1) :  # Symmetric chunk generation
+        #for chunk_x in range(int(current_chunk_x ) -1, int(current_chunk_x) + 1) :  # Symmetric chunk generation
             ### ISSUE HERE: if the above values that - or + the range parameters it ONLY draws either the left or the right of the middle of the screen
 
-            for chunk_y in range(int(current_chunk_y) - 1, int(current_chunk_y) + 1) : #Generate chunks above and below
-                if (chunk_x,chunk_y) not in generated_chunks:
-                    gend_a_chunk = True 
-                    generated_chunks[(chunk_x, chunk_y)] = generate_chunk(chunk_x, chunk_y)
-                    #print("This is chunk_x: ",chunk_x)
-                    #print("This is generated_chunks: ",generated_chunks)
-                    #print("This is generated chunks keys: ",generated_chunks.keys())
+        for chunk_y in range(int(current_chunk_y) - 1, int(current_chunk_y) + 1) : #Generate chunks above and below
+            if (current_chunk_x,chunk_y) not in generated_chunks:
+                gend_a_chunk = True 
+                generated_chunks[(current_chunk_x, chunk_y)] = generate_chunk(current_chunk_x, chunk_y)
+                #print("This is chunk_x: ",chunk_x)
+                #print("This is generated_chunks: ",generated_chunks)
+                #print("This is generated chunks keys: ",generated_chunks.keys())
    
         #print(f"Generating chunk: {chunk_x}, {chunk_y}")
         kill_these_chunks = []
@@ -668,30 +771,29 @@ def main_CoA(window):
         if gend_a_chunk == True:
         #if we generate a chunk, clear the dictionary of any chunks that arent in the screen range 
             current_keys = generated_chunks.keys()
-            #print("This is current keys:",current_keys)
+        
             for badkeys in current_keys:
                 #badkeys[0] not in range(round(current_chunk_x - 2), round(current_chunk_x + 1))
                 if badkeys[1] not in range(round(current_chunk_y - 1), round(current_chunk_y + 3)): # check the y value of chunk is out of range 
                     
                     #print("This is the range of allowed y values: ", range(round(current_chunk_y - 1), round(current_chunk_y + 3)))
-                    #print("This is the bad y value:",badkeys[1])
+                    
                     kill_these_chunks.append(badkeys)
 
-        #print(f"This is generated chunks after everything:",generated_chunks)
-        
+       
         # Add platforms from generated chunks to objects list if we made a new chunk
             for indexpos in generated_chunks:
-                chunk_data = generated_chunks[chunk_x,chunk_y]
+                chunk_data = generated_chunks[current_chunk_x,chunk_y]
                 #print(chunk_x)
                 # Function to draw the chunk
                 list_obj_indexes = []
                 for platform in chunk_data: 
                     #can init and draw platforms here 
                     #make a dictionary corresponding to the chunk x that contains the generated objects, so we can iterate through it and manage it
-                    #print("This is platform;",platform)
+                   
                     platform_x = (platform[0] ) #removed offset_x since there isnt any side scrolling in this version
                     platform_y = (platform[1] + offset_y)
-                    #print(f"This is platform x {platform_x} and platform y {platform_y}")
+                    
                     if chunk_y > -2000: #first biome 
                         platform = Platform(platform_x,platform_y,96,32)
                         #platform = Platform(platform_x,platform_y,96,32)
@@ -738,19 +840,27 @@ def main_CoA(window):
 
         # Clear screen before drawing next frame
         window.fill(WHITE)
-
-        draw(window, background, bg_image,player,objects,offset_x,offset_y)
-
         #Run the animation loops, handle movement, draw each frame with the list of objects
-        player.loop(FPS)  #runs player
-        fire.loop()       #runs fire 
-        handle_move(player,objects) #handle movement via input
 
-    
+        player_1.loop(FPS)  #runs player loop, CHECK if healthbar refactor worked
+        #player.draw(window,offset_x,offset_y)
+       
+        fire.loop()       #runs fire 
+       
+        draw(window,background,bg_image, player_1,
+             objects,offset_x,offset_y)
+          
+        #handle movement via input
+        handle_move(player_1,objects)
+      
+        #run a update health bar method here after handling move/collision
+        
+        
         PLAY_MOUSE_POS = pygame.mouse.get_pos() #get player mouse position 
         Pause_onscreen.changeColor(PLAY_MOUSE_POS) #Handle pause button interaction
         Pause_onscreen.update(window) #Handle pause button interaction
-
+        
+        
         #if ((player.rect.right - offset_x >= WIDTH - X_scroll_area_width) and player.x_vel > 0) or (
         #    (player.rect.left - offset_x <= X_scroll_area_width) and player.x_vel < 0):
         #    offset_x += player.x_vel
@@ -764,10 +874,9 @@ def main_CoA(window):
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
         #    offset_x += player.x_vel
-            
 
         #Handles vertical scrolling 
-        if ((player.rect.bottom - offset_y <= Y_scroll_area_width) and player.y_vel < 0):
+        if ((player_1.rect.bottom - offset_y <= Y_scroll_area_width) and player_1.y_vel < 0):
             #add this for downward scrolling or 
             #    
         #:((player.rect.top - offset_y >= HEIGHT - Y_scroll_area_width) and player.y_vel > 0)
@@ -776,8 +885,8 @@ def main_CoA(window):
             ###JUMP CUT to next screen###
             #offset_x= min(player.rect.right - WIDTH + scroll_area_width, WIDTH * 2 - WIDTH)
             #SCROLLING###
-            offset_y += player.y_vel
-            player_world_y += player.y_vel
+            offset_y += player_1.y_vel
+            player_world_y += player_1.y_vel
            
         #print("This is the length of objects: ", len(objects))
         
@@ -787,5 +896,6 @@ def main_CoA(window):
     quit()
 
 #Runs game only if we are running this script directly
-if __name__ == "__main__":
+
+if __name__ == "__main__" and RUNGAME == True:
     main_CoA(window)

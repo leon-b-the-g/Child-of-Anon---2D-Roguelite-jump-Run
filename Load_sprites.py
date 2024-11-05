@@ -1,5 +1,5 @@
 #CONFIGS
-from Config import *
+#from Config import *
 from Config import WIDTH, HEIGHT
 
 #Other important modules
@@ -22,7 +22,7 @@ pygame.display.set_caption("Children of Anor")
 #Drawing window
 window = pygame.display.set_mode((WIDTH,HEIGHT))
 
-
+#window = pygame.display.set_mode((1340, 720))
 
 
 
@@ -75,7 +75,6 @@ def flip(sprites):
     return [pygame.transform.flip(sprite, True, False) for sprite in sprites]
 
 
-#Function for loading sprite sheets
 
 
 def load_sprite_sheets(dir1,dir2,width,height,direction=False):
@@ -92,6 +91,7 @@ def load_sprite_sheets(dir1,dir2,width,height,direction=False):
     #Parse the images into right and left facing sprites
     for image in images:
         #Load the sprite sheet, convert alpha to make them transparent background images
+
         sprite_sheet = pygame.image.load(join(path,image)).convert_alpha()
 
         sprites = []

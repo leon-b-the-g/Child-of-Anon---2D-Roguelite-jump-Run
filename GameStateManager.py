@@ -115,7 +115,7 @@ class Level:
         # Run method so that we can dynamically change the game state
     def run(self):
         self.display.fill('red')
-
+    
 
     #Making a class for the Startscreen screen of the game, inheriting from object class, so we can have text on screen
 class Startscreen(Object): #NOT IN USE YET
@@ -176,13 +176,13 @@ class Play_game(Button):
 
         #Init button class
         
-          
-
-    
     def run(self):
             #EXECUTE CoA_run in this function!
         from CoA_Run import main_CoA
-        main_CoA(SCREEN) #Run main game
+        while RUNGAME == True:
+            main_CoA(SCREEN) #Run main game
+        
+        self.gameStateManager.set_state('Pause')
 
       
 class Main_menu(Button):
@@ -270,6 +270,8 @@ class Options(Button):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
                         GameStateManager.set_state(state="Main_menu") ##MISSING STATE HERE?
+
+                    
 
             pygame.display.update()
 
